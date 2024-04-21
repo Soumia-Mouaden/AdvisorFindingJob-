@@ -107,11 +107,11 @@
     </div>
 
 
-    <div class="container my-5">
+    <div class="container my-5  ">
         <!-- Stepper -->
-        <div class="stepper-wrapper">
+        <div class="stepper-wrapper col-md-10 offset-md-1">
           <!-- Étape 1 -->
-          <div class="text-center d-flex flex-column align-items-center">
+          <div class="breadcrumb text-center d-flex flex-column align-items-center">
             <div class="step active">1</div>
             <div class="stepper-label active" style="color:#333">Info Basique</div>
           </div>
@@ -142,9 +142,10 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-8 offset-md-2 form-container mb-5"> <!-- 'mb-5' ajoute une marge en bas -->
+            <div class="col-md-10 offset-md-1 form-container mb-5"> <!-- 'mb-5' ajoute une marge en bas -->
                 <!-- Votre formulaire ici -->
             <form>
+              <section class="form-step active">
                 <h4>Informations de base</h4>
                 <p>Tous les champs sont requis sauf mention contraire.</p>
                 <div class="mb-3">
@@ -209,8 +210,37 @@
             </div>
           </div>
           
-          <button type="submit" class="btn btn-block w-100 mt-3" style="background-color: #888888; color: white;">Suivant</button>
+          <button  class="next-button btn btn-block w-100 mt-3" style="background-color: #888888; color: white;">Suivant</button>
+        </section>
+
+        <!-- soumia  -->
+
+        <section class="form-step" style="display: none;">
+          <!-- Contenu de l'étape 2 -->
+          <h2>Infos de contact</h2>
+          <p>Description de l'étape 2...</p>
+          <!-- Champs de l'étape 2... -->
+          
+          <span class="prev-button">&lt;</span>
+          <span class="skip-button">Skip</span>
+          <span class="next-button">&gt;</span>
+        </section>
+
+        <section class="form-step" style="display: none;">
+          <!-- Contenu de l'étape 3 -->
+          <h2>Info d'inscription</h2>
+          <p>Description de l'étape 3...</p>
+          <!-- Champs de l'étape 3... -->
+          <span class="prev-button">&lt;</span>
+          <span class="skip-button">Skip</span>
+          <span class="submit-button">Soumettre</span>
+
+        </section>
+        <section class="form-step" style="display: none;">
+
         </form>
+
+
            
           </div>
         </div>
@@ -320,6 +350,58 @@ monthSelect.addEventListener('change', function(e) {
   generateDayOptions();
 
   
+  </script>
+  
+
+  <script>
+    // script.js
+    document.addEventListener('DOMContentLoaded', function () {
+      const steps = document.querySelectorAll('.form-step');
+      const nextBtns = document.querySelectorAll('.next-button');
+      const prevBtns = document.querySelectorAll('.prev-button');
+      const skipBtns = document.querySelectorAll('.skip-button');
+      let currentStep = 0;
+
+      function showStep(step) {
+        steps.forEach((s, i) => {
+          s.style.display = i === step ? 'block' : 'none';
+          s.classList.toggle('active', i === step);
+        });
+        const breadcrumbs = document.querySelectorAll('.breadcrumb .step');
+        breadcrumbs.forEach((crumb, i) => {
+          crumb.classList.toggle('active', i <= step);
+        });
+      }
+
+      nextBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (currentStep < steps.length - 1) {
+            currentStep++;
+            showStep(currentStep);
+          }
+        });
+      });
+
+      prevBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (currentStep > 0) {
+            currentStep--;
+            showStep(currentStep);
+          }
+        });
+      });
+
+      skipBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (currentStep < steps.length - 1) {
+            currentStep++;
+            showStep(currentStep);
+          }
+        });
+      });
+
+      showStep(currentStep); // Initialize first step
+    });
   </script>
   
 

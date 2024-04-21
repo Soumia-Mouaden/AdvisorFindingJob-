@@ -21,14 +21,74 @@
     <form class="form">
       <section class="form-step active">
         <!-- Contenu de l'étape 1 -->
-        <h2>Informations basiques</h2>
-        <p>Description de l'étape 1...</p>
-        <div class="form-group">
-          <label for="nom">*Nom</label>
-          <input type="text" id="nom" required>
+        
+
+          <h4>Informations de base</h4>
+          <p>Tous les champs sont requis sauf mention contraire.</p>
+          <div class="mb-3">
+            <label for="firstName" class="form-label">Prénom *</label>
+            <input type="text" class="form-control" id="firstName" required>
+          </div>
+          <div class="mb-3">
+            <label for="middleName" class="form-label">Deuxième prénom</label>
+            <input type="text" class="form-control" id="middleName">
+          </div>
+          <div class="mb-3">
+            <label for="lastName" class="form-label">Nom *</label>
+            <input type="text" class="form-control" id="lastName" required>
+          </div>
+          
+         
+    
+    
+    <!-- Section pour le genre -->
+    <div class="mb-3">
+        <label class="form-label mb-2">Genre (facultatif)</label>
+        <div class="row justify-content-between">
+          <div class="col form-check">
+            <input class="form-check-input" type="radio" name="gender" id="female">
+            <label class="form-check-label" for="female">Femme</label>
+          </div>
+          <div class="col form-check">
+            <input class="form-check-input" type="radio" name="gender" id="male">
+            <label class="form-check-label" for="male">Homme</label>
+          </div>
+          
         </div>
-        <span class="prev-button">&lt;</span>
-        <span class="next-button">&gt;</span>
+      </div>
+      
+      
+      
+    
+          <div class="mb-3">
+      <label class="form-label d-block mb-2">Date de naissance *</label>
+      <div class="row">
+        <!-- Mois -->
+        <div class="col">
+          <select class="form-select" id="birthMonth" required>
+              <option selected>Mois</option>
+            </select>
+        </div>
+        <!-- Jour -->
+        <div class="col">
+          <select class="form-select" id="birthDay" required>
+            <option selected>Jour</option>
+           
+            
+          </select>
+        </div>
+        <!-- Année -->
+        <div class="col">
+          <select class="form-select" id="birthYear" required>
+            <option selected>Année</option>
+            
+          </select>
+        </div>
+      </div>
+    </div>
+    
+    <button class="next-button btn btn-block w-100 mt-3" style="background-color: #888888; color: white;">Suivant</button>
+ 
       </section>
       <section class="form-step" style="display: none;">
         <!-- Contenu de l'étape 2 -->
