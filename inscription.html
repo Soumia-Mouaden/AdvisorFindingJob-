@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rejoignez-nous</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 class="title">Rejoignez-nous</h1>
+      <p class="subtitle">Rejoignez-nous pour bénéficier d'un accompagnement et réussir votre carrière</p>
+      <div class="breadcrumb">
+        <div class="step active"></div>
+        <div class="step"></div>
+        <div class="step"></div>
+        <div class="step"></div>
+      </div>
+    </div>
+    <form class="form">
+      <section class="form-step active">
+        <!-- Contenu de l'étape 1 -->
+        <h2>Informations basiques</h2>
+        <p>Description de l'étape 1...</p>
+        <div class="form-group">
+          <label for="nom">*Nom</label>
+          <input type="text" id="nom" required>
+        </div>
+        <span class="prev-button">&lt;</span>
+        <span class="next-button">&gt;</span>
+      </section>
+      <section class="form-step" style="display: none;">
+        <!-- Contenu de l'étape 2 -->
+        <h2>Infos de contact</h2>
+        <p>Description de l'étape 2...</p>
+        <!-- Champs de l'étape 2... -->
+        <span class="prev-button">&lt;</span>
+        <span class="skip-button">Skip</span>
+        <span class="next-button">&gt;</span>
+      </section>
+      <section class="form-step" style="display: none;">
+        <!-- Contenu de l'étape 3 -->
+        <h2>Info d'inscription</h2>
+        <p>Description de l'étape 3...</p>
+        <!-- Champs de l'étape 3... -->
+        <span class="prev-button">&lt;</span>
+        <span class="skip-button">Skip</span>
+        <span class="next-button">&gt;</span>
+      </section>
+      <section class="form-step" style="display: none;">
+        <!-- Contenu de l'étape 4 -->
+        <h2>Finalisation</h2>
+        <p>Vérifiez vos informations puis cliquez sur "Soumettre".</p>
+        <!-- Champs de l'étape 4... -->
+        <span class="prev-button">&lt;</span>
+        <span class="submit-button">Soumettre</span>
+      </section>
+      <!-- Ajouter d'autres sections si nécessaire -->
+    </form>
+  </div>
+  <script>
+    // script.js
+    document.addEventListener('DOMContentLoaded', function () {
+      const steps = document.querySelectorAll('.form-step');
+      const nextBtns = document.querySelectorAll('.next-button');
+      const prevBtns = document.querySelectorAll('.prev-button');
+      const skipBtns = document.querySelectorAll('.skip-button');
+      let currentStep = 0;
+
+      function showStep(step) {
+        steps.forEach((s, i) => {
+          s.style.display = i === step ? 'block' : 'none';
+          s.classList.toggle('active', i === step);
+        });
+        const breadcrumbs = document.querySelectorAll('.breadcrumb .step');
+        breadcrumbs.forEach((crumb, i) => {
+          crumb.classList.toggle('active', i <= step);
+        });
+      }
+
+      nextBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (currentStep < steps.length - 1) {
+            currentStep++;
+            showStep(currentStep);
+          }
+        });
+      });
+
+      prevBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (currentStep > 0) {
+            currentStep--;
+            showStep(currentStep);
+          }
+        });
+      });
+
+      skipBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (currentStep < steps.length - 1) {
+            currentStep++;
+            showStep(currentStep);
+          }
+        });
+      });
+
+      showStep(currentStep); // Initialize first step
+    });
+  </script>
+</body>
+</html>
