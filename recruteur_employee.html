@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centered and Separated Cards</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body, html {
+      height: 100%;
+      overflow: hidden; /* Empêche le défilement */
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 100px;
+    }
+    .card {
+      max-width: 500px; /* Taille fixe des cartes */
+      margin: 0 50px; /* Augmenter la marge entre les cartes */
+    }
+    .card img {
+      width: 400px;
+      height: 300px; /* Hauteur fixe des images */
+      object-fit: cover; /* Assure que l'image couvre toute la zone définie */
+    }
+  </style>
+</head>
+<body>
+  <img src="img/logoApp.jpg" alt="Votre Logo" style="display: block; margin: 10px auto; width: 90px; height: 80px; margin-top:30px;">
+
+  <div class="container">
+    <a href="lien_vers_recruteur.html" class="card">
+      <img class="card-img-top" src="img/recruteur.jpg" alt="Recruteur">
+      <div class="card-body">
+        <h4 class="card-title text-center" style="color:black">Recruteur</h4>
+      </div>
+    </a>
+    <a href="lien_vers_employe.html" class="card">
+      <img class="card-img-top" src="img/employé.jpg" alt="Employé">
+      <div class="card-body">
+        <h4 class="card-title text-center" style="color:black">Employé</h4>
+      </div>
+    </a>
+  </div>
+</body>
+</html>
