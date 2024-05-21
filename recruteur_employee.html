@@ -8,7 +8,6 @@
   <style>
     body, html {
       height: 100%;
-      overflow: hidden; /* Empêche le défilement */
     }
     .container {
       display: flex;
@@ -17,32 +16,44 @@
       margin-top: 100px;
     }
     .card {
-      max-width: 500px; /* Taille fixe des cartes */
-      margin: 0 50px; /* Augmenter la marge entre les cartes */
+      max-width: 500px; 
+      margin: 0 50px; 
     }
     .card img {
       width: 400px;
-      height: 300px; /* Hauteur fixe des images */
-      object-fit: cover; /* Assure que l'image couvre toute la zone définie */
+      height: 300px; 
+      object-fit: cover; 
+    }
+
+    .card:hover {
+      text-decoration: none;
+    }
+    .col-md-6:hover{
+      background-color: rgb(232, 235, 238);
     }
   </style>
 </head>
 <body>
   <img src="img/logoApp.jpg" alt="Votre Logo" style="display: block; margin: 10px auto; width: 90px; height: 80px; margin-top:30px;">
-
   <div class="container">
-    <a href="lien_vers_recruteur.html" class="card">
-      <img class="card-img-top" src="img/recruteur.jpg" alt="Recruteur">
-      <div class="card-body">
-        <h4 class="card-title text-center" style="color:black">Recruteur</h4>
+    <div class="row">
+      <div class="col-md-6">
+        <a href="lien_vers_recruteur.html" class="card">
+          <img class="card-img-top" src="img/recruteur.jpg" alt="Recruteur">
+          <div class="card-body">
+            <h4 class="card-title text-center" style="color:black">Recruteur</h4>
+          </div>
+        </a>
       </div>
-    </a>
-    <a href="lien_vers_employe.html" class="card">
-      <img class="card-img-top" src="img/employé.jpg" alt="Employé">
-      <div class="card-body">
-        <h4 class="card-title text-center" style="color:black">Employé</h4>
+      <div class="col-md-6">
+        <a href="lien_vers_employe.html" class="card">
+          <img class="card-img-top" src="img/employé.jpg" alt="Employé">
+          <div class="card-body">
+            <h4 class="card-title text-center" style="color:black">Employé</h4>
+          </div>
+        </a>
       </div>
-    </a>
+    </div>
   </div>
 </body>
 </html>
