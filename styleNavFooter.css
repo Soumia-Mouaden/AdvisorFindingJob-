@@ -1,0 +1,101 @@
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar {
+    background-color: #ffffff; /* Couleur de fond de la barre de navigation */
+  }
+
+  .navbar-brand img {
+    height: 24px; /* Hauteur de votre logo basée sur le design */
+  }
+
+  .nav-link {
+    color: #4D4D4D; /* Couleur des liens de navigation */
+    margin-right: 16px; /* Espacement entre les liens */
+  }
+
+  .nav-link:hover {
+    color: #333333; /* Couleur au survol */
+  }
+
+  .btn-signup {
+    background-color: #2194F3; /* Couleur de fond du bouton S'inscrire */
+    color: white; /* Couleur du texte du bouton S'inscrire */
+    border-radius: 2px; /* Rayon de bordure du bouton */
+    padding: 10px 22px; /* Rembourrage intérieur */
+  }
+
+  .btn-signup:hover {
+    background-color: #0D82D2; /* Couleur de fond du bouton au survol */
+  }
+
+  .hero-section {
+    background-color: #F5F7FA; /* Couleur de fond de la section héroïque */
+    padding: 66px 100px; /* Rembourrage intérieur */
+  }
+  
+footer {
+    background-color: #0a83db;
+    color: #ffffff;
+  }
+  
+  footer img {
+    width: auto;
+    height: 50px; /* Ajustez en fonction de la taille de votre logo */
+    margin-bottom: 16px;
+  }
+  
+  footer p {
+    margin-bottom: 16px;
+  }
+  
+  footer a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  footer a:hover {
+    text-decoration: underline;
+  }
+  
+  footer h5 {
+    margin-bottom: 14px;
+  }
+  
+  footer ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  footer ul li a {
+    color: #ffffff;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  footer ul li a:hover {
+    color: #d1e9ff;
+  }
+  
+  footer .form-control {
+    background-color: #f1f4f8;
+    border: none;
+    border-radius: 20px;
+    color: #0a83db;
+  }
+  
+  footer .btn-primary {
+    background-color: #ffffff;
+    color: #0a83db;
+    border: none;
+    border-radius: 20px;
+    text-transform: uppercase;
+    padding: 10px 24px;
+  }
+  
+  footer .btn-primary:hover {
+    background-color: #e2e6ea;
+  }
