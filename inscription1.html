@@ -42,7 +42,7 @@
     }
     .stepper-label {
       text-align: center;
-      margin-top:1rem;
+      margin-top: 1rem;
       color: #888888;
     }
     .centered-logo {
@@ -76,6 +76,9 @@
     }
     .keyword:hover {
       background-color: #e0e0e0;
+    }
+    .list-group-item{
+        background-color: #888888;
     }
   </style>
 </head>
@@ -185,7 +188,7 @@
                       </div>
                     </div>
                   </div>
-                  <button class="next-button btn btn-block w-100 mt-3" style="background-color: #888888; color: white;">Suivant</button>
+                  <button type="button" class="next-button btn btn-block w-100 mt-3" style="background-color: #888888; color: white;">Suivant</button>
                 </section>
   
                 <section class="form-step" style="display: none;">
@@ -206,10 +209,16 @@
                     <label for="degree" class="form-label">Diplôme obtenu</label>
                     <input type="text" class="form-control" id="degree" required>
                   </div>
-                  <div class="mb-3">
+                  <div class="card-body">
                     <label for="languages" class="form-label">Langues parlées et niveau de maîtrise</label>
-                    <input type="text" class="form-control" id="languages" required>
-                  </div>
+                    <ul class="list-group">
+                        
+                    </ul>
+                    <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#addLanguageModal" style="background-color:#888888;">
+                        <i class="bi bi-plus"></i> Ajouter une langue
+                    </button>
+                </div>
+                  
                   <div class="mb-3">
                     <label for="skills" class="form-label">Compétences techniques</label>
                     <div id="keywordContainerCompetence">
@@ -217,18 +226,16 @@
                     </div>
                     <input class="form-control" type="text" id="keywordInputCompetence" rows="3" placeholder="Tapez une compétence et appuyez sur Entrée">
                   </div>
-                  <span class="prev-button">&lt;</span>
-                  <span class="skip-button">Skip</span>
-                  <span class="next-button">&gt;</span>
+                  <button type="button" class="prev-button btn btn-block w-100 mt-3" style="background-color: #888888; color: white;">Précédent</button>
+                  <button type="button" class="next-button btn btn-block w-100 mt-3" style="background-color: #888888; color: white;">Suivant</button>
                 </section>
   
                 <section class="form-step" style="display: none;">
-                  <h2>Description du poste recherché</h2>
+                  <h2>Poste recherché</h2>
                   <div class="mb-3">
-                    <label for="jobTitleInput" class="form-label">Titre du poste</label>
-                    <input type="text" class="form-control" id="jobTitleInput" placeholder="Intitulé du poste" required>
+                    <label for="jobTitle" class="form-label">Poste recherché</label>
+                    <input type="text" class="form-control" id="jobTitle" required>
                   </div>
-
                   <div class="mb-3">
                     <label for="salaryRangeInput" class="form-label">Fourchette de salaire minimale (dh)</label>
                     <input type="number" class="form-control" id="salaryRangeInput" placeholder="Salaire souhaité" min="0" step="1" required>
@@ -258,9 +265,9 @@
                   <div class="mb-3">
                     <label for="professionalExperience" class="form-label">Nombres d'années d'expériences</label>
                     <input type="number" class="form-control" id="professionalExperience" min="0" step="1">
-                  </div>                  
-                  <span class="prev-button">&lt;</span>
-                  <button class="submit-button btn btn-block w-100 mt-3" style="background-color: #888888; color: white;">Soumettre</button>
+                  </div>      
+                  <button type="button" class="prev-button btn btn-block w-100 mt-3" style="background-color: #888888; color: white;">Précédent</button>
+                  <button type="submit" class="next-button btn btn-block w-100 mt-3" style="background-color: #888888; color: white;">Soumettre</button>
                 </section>
               </form>
             </div>
@@ -268,120 +275,201 @@
         </div>
       </div>
     </div>
-  
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-      function changeLanguage(language) {
-        if (language === 'ar') {
-          document.body.dir = 'rtl';
-        } else if (language === 'fr') {
-          document.body.dir = 'ltr';
-        }
-      }
-    </script>
-    <script>
-      function generateMonthOptions() {
-        var months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
-        var select = document.getElementById('birthMonth');
-        for (var i = 0; i < months.length; i++) {
-          var option = document.createElement('option');
-          option.value = i + 1;
-          option.innerText = months[i];
-          select.appendChild(option);
-        }
-      }
-      generateMonthOptions();
-  
-      function generateYearOptions(startYear, endYear) {
-        var select = document.getElementById('birthYear');
-        for (var year = startYear; year <= endYear; year++) {
-          var option = document.createElement('option');
-          option.value = year;
-          option.innerText = year;
-          select.appendChild(option);
-        }
-      }
-      generateYearOptions(1964, 2010);
-  
-      function generateDayOptions() {
-        var select = document.getElementById('birthDay');
-        for (var day = 1; day <= 31; day++) {
-          var option = document.createElement('option');
-          option.value = day;
-          option.innerText = day;
-          select.appendChild(option);
-        }
-      }
-      generateDayOptions();
-  
-      function addCompetence(competence) {
-      var container = document.getElementById('keywordContainerCompetence');
-      var span = document.createElement('span');
-      span.className = 'keyword';
-      span.textContent = competence;
+  </div>
+  <div class="modal fade" id="addLanguageModal" tabindex="-1" aria-labelledby="addLanguageModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addLanguageModalLabel">Ajouter une langue</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+            <div class="modal-body">
+                <form id="languageForm">
+                    <div class="mb-3">
+                        <label for="languageSelect" class="form-label">Langue</label>
+                        <select class="form-select" id="languageSelect" required>
+                            <option value="" disabled selected>Veuillez sélectionner</option>
+                            <option value="Arabe">Arabe</option>
+                            <option value="Anglais">Anglais</option>
+                            <option value="Français">Français</option>
+                            <option value="Espagnol">Espagnol</option>
+                            <option value="Autre">Autre</option>
+                        </select>
+                    </div>
+                    <div class="mb-3" id="customLanguageDiv" style="display: none;">
+                        <label for="customLanguageInput" class="form-label">Langue personnalisée</label>
+                        <input type="text" class="form-control" id="customLanguageInput">
+                    </div>
+                    <div class="mb-3">
+                        <label for="proficiencyInput" class="form-label">Niveau</label>
+                        <select class="form-select" id="proficiencyInput" required>
+                            <option value="" disabled selected>Veuillez sélectionner</option>
+                            <option value="Compétence native ou bilingue">Compétence native ou bilingue</option>
+                            <option value="Compétence professionnelle">Compétence professionnelle</option>
+                            <option value="Compétence professionnelle limitée">Compétence professionnelle limitée</option>
+                            <option value="Compétence élémentaire">Compétence élémentaire</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="background-color: #888888;">Enregistrer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
 
-      var removeIcon = document.createElement('span');
-      removeIcon.className = 'remove-icon';
-      removeIcon.innerHTML = '&times;';
-      removeIcon.addEventListener('click', function() {
-        container.removeChild(span);
+  <script>
+    document.getElementById('languageSelect').addEventListener('change', function() {
+      var customLanguageInput = document.getElementById('customLanguage');
+      if (this.value === 'Autre') {
+        customLanguageInput.style.display = 'block';
+      } else {
+        customLanguageInput.style.display = 'none';
+      }
+    });
+
+    document.querySelectorAll('.next-button').forEach(button => {
+      button.addEventListener('click', () => {
+        const currentSection = button.closest('.form-step');
+        const nextSection = currentSection.nextElementSibling;
+        if (nextSection && nextSection.classList.contains('form-step')) {
+          currentSection.style.display = 'none';
+          nextSection.style.display = 'block';
+        }
       });
+    });
 
-      span.appendChild(removeIcon);
-      container.appendChild(span);
+    document.querySelectorAll('.prev-button').forEach(button => {
+      button.addEventListener('click', () => {
+        const currentSection = button.closest('.form-step');
+        const prevSection = currentSection.previousElementSibling;
+        if (prevSection && prevSection.classList.contains('form-step')) {
+          currentSection.style.display = 'none';
+          prevSection.style.display = 'block';
+        }
+      });
+    });
+
+    document.querySelector('.submit-button').addEventListener('click', event => {
+      event.preventDefault();
+      alert('Form submitted successfully!');
+    });
+
+  </script>
+ <script>
+    function changeLanguage(language) {
+      if (language === 'ar') {
+        document.body.dir = 'rtl';
+      } else if (language === 'fr') {
+        document.body.dir = 'ltr';
+      }
     }
-      document.getElementById('keywordInputCompetence').addEventListener('keydown', function(event) {
-        if (event.key === 'Enter') {
-          event.preventDefault();
-          var competence = event.target.value.trim();
-          if (competence) {
-            addCompetence(competence);
-            event.target.value = '';
-          }
-        }
-      });
-  
-      document.querySelectorAll('.next-button').forEach(button => {
-        button.addEventListener('click', event => {
-          event.preventDefault();
-          const currentStep = button.closest('.form-step');
-          const nextStep = currentStep.nextElementSibling;
-          if (nextStep && nextStep.classList.contains('form-step')) {
-            currentStep.style.display = 'none';
-            nextStep.style.display = 'block';
-          }
-        });
-      });
-  
-      document.querySelectorAll('.prev-button').forEach(button => {
-        button.addEventListener('click', event => {
-          event.preventDefault();
-          const currentStep = button.closest('.form-step');
-          const prevStep = currentStep.previousElementSibling;
-          if (prevStep && prevStep.classList.contains('form-step')) {
-            currentStep.style.display = 'none';
-            prevStep.style.display = 'block';
-          }
-        });
-      });
-  
-      document.querySelectorAll('.skip-button').forEach(button => {
-        button.addEventListener('click', event => {
-          event.preventDefault();
-          const currentStep = button.closest('.form-step');
-          const nextStep = currentStep.nextElementSibling;
-          if (nextStep && nextStep.classList.contains('form-step')) {
-            currentStep.style.display = 'none';
-            nextStep.style.display = 'block';
-          }
-        });
-      });
-  
-      document.querySelector('.submit-button').addEventListener('click', event => {
+  </script>
+  <script>
+    function generateMonthOptions() {
+      var months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+      var select = document.getElementById('birthMonth');
+      for (var i = 0; i < months.length; i++) {
+        var option = document.createElement('option');
+        option.value = i + 1;
+        option.innerText = months[i];
+        select.appendChild(option);
+      }
+    }
+    generateMonthOptions();
+
+    function generateYearOptions(startYear, endYear) {
+      var select = document.getElementById('birthYear');
+      for (var year = startYear; year <= endYear; year++) {
+        var option = document.createElement('option');
+        option.value = year;
+        option.innerText = year;
+        select.appendChild(option);
+      }
+    }
+    generateYearOptions(1964, 2010);
+
+    function generateDayOptions() {
+      var select = document.getElementById('birthDay');
+      for (var day = 1; day <= 31; day++) {
+        var option = document.createElement('option');
+        option.value = day;
+        option.innerText = day;
+        select.appendChild(option);
+      }
+    }
+    generateDayOptions();
+
+    function addCompetence(competence) {
+    var container = document.getElementById('keywordContainerCompetence');
+    var span = document.createElement('span');
+    span.className = 'keyword';
+    span.textContent = competence;
+
+    var removeIcon = document.createElement('span');
+    removeIcon.className = 'remove-icon';
+    removeIcon.innerHTML = '&times;';
+    removeIcon.addEventListener('click', function() {
+      container.removeChild(span);
+    });
+
+    span.appendChild(removeIcon);
+    container.appendChild(span);
+  }
+    document.getElementById('keywordInputCompetence').addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
         event.preventDefault();
-        alert('Form submitted successfully!');
-      });
+        var competence = event.target.value.trim();
+        if (competence) {
+          addCompetence(competence);
+          event.target.value = '';
+        }
+      }
+    });
+
+    
+
+   
+
+    
+
+    
+  </script>
+  <script>
+    document.getElementById('languageSelect').addEventListener('change', function() {
+        const customLanguageDiv = document.getElementById('customLanguageDiv');
+        if (this.value === 'Autre') {
+            customLanguageDiv.style.display = 'block';
+        } else {
+            customLanguageDiv.style.display = 'none';
+        }
+    });
+    
+    document.getElementById('languageForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const selectedLanguage = document.getElementById('languageSelect').value;
+        const customLanguage = document.getElementById('customLanguageInput').value;
+        const language = selectedLanguage === 'Autre' ? customLanguage : selectedLanguage;
+        const proficiency = document.getElementById('proficiencyInput').value;
+    
+        if (language && proficiency) {
+            const listGroup = document.querySelector('.list-group');
+            const newListItem = document.createElement('li');
+            newListItem.className = 'list-group-item';
+            newListItem.innerHTML = `${language} <span class="badge bg-primary">${proficiency}</span>`;
+            listGroup.appendChild(newListItem);
+    
+            // Fermer la modale
+            var addLanguageModal = new bootstrap.Modal(document.getElementById('addLanguageModal'));
+            addLanguageModal.hide();
+    
+            // Réinitialiser le formulaire
+            document.getElementById('languageForm').reset();
+            document.getElementById('customLanguageDiv').style.display = 'none';
+        }
+    });
     </script>
-  </body>
-  </html>
   
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
