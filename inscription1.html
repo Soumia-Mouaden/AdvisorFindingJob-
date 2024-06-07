@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -9,15 +8,14 @@
   
   <style>
     body {
-      background-color: #f5f5f5; /* Couleur de fond pour tout le corps de la page */
+      background-color: #f5f5f5;
     }
     .form-container {
-      background-color: #ffffff; /* Couleur de fond pour le formulaire */
+      background-color: #ffffff;
       border-radius: 0.5rem;
       padding: 2rem;
       margin-top: 2rem;
     }
-   
     .step {
       width: 1.5rem;
       height: 1.5rem;
@@ -27,105 +25,81 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      /* margin-right: 0.5rem; */
     }
-
     .step.active {
-    background-color: #333; /* Ou toute autre couleur pour indiquer l'active */
-  }
-
+      background-color: #333;
+    }
     .stepper-wrapper .line {
       flex-grow: 1;
       height: 1px;
       background-color: #333;
       margin: 50px;
     }
-
-    
     .stepper-wrapper {
       display: flex;
-      /* justify-content: space-between; */
       align-items: center;
       justify-content: center;
-
     }
-
-    
-
     .stepper-label {
-      /* Vous pouvez ajouter des styles pour le texte ici si nécessaire */
-      text-align: center; /* Centre le texte sous les étapes */
-      margin-top:1rem; /* Espace entre le cercle de l'étape et son label */
+      text-align: center;
+      margin-top: 1rem;
       color: #888888;
     }
-    
-
     .centered-logo {
       display: flex;
       justify-content: center;
       align-items: center;
-      /* height: 100%; */
     }
-   
-    /* Couleur de fond bleue pour la barre de navigation */
     .bg-blue {
-      background-color: #2194f3; /* Changer la couleur si nécessaire */
+      background-color: #2194f3;
     }
-
-    .prev-button, .skip-button, .next-button  {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 5px;
-    border-radius: 5px;
-    background-color: grey;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-
+    .prev-button, .skip-button, .next-button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 5px;
+      border-radius: 5px;
+      background-color: grey;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
     .keyword {
-        display: inline-block;
-        padding: 5px 10px;
-        margin: 5px;
-        background-color: #f0f0f0;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        cursor: pointer;
+      display: inline-block;
+      padding: 5px 10px;
+      margin: 5px;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      cursor: pointer;
     }
     .keyword:hover {
-        background-color: #e0e0e0;
+      background-color: #e0e0e0;
     }
-
-}
-    /* Styles supplémentaires peuvent être nécessaires pour ajuster les liens ou autres éléments de la navbar */
+    .list-group-item{
+        background-color: #888888;
+    }
   </style>
-
 </head>
 <body>
 
   <nav class="navbar navbar-expand-lg bg-blue">
     <div class="container container-fluid justify-content-center">
-      <div class="centered-logo" >
-        <!-- Assurez-vous que le chemin vers l'image du logo est correct -->
-        <img src="img/logoAppConexion.png" alt="Logo" width="70" >
+      <div class="centered-logo">
+        <img src="img/logoAppConexion.png" alt="Logo" width="70">
       </div>
     </div>
-
-    <!-- Sélecteur de langue -->
     <div class="dropdown">
-        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownLangButton" data-bs-toggle="dropdown" aria-expanded="false">
-          Langue
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownLangButton">
-          <li><a class="dropdown-item" href="javascript:void(0);" onclick="changeLanguage('fr')">Français</a></li>
-          <li><a class="dropdown-item" href="javascript:void(0);" onclick="changeLanguage('ar')">العربية</a></li>
-        </ul>
-      </div>
+      <button class="btn btn-light dropdown-toggle" type="button" id="dropdownLangButton" data-bs-toggle="dropdown" aria-expanded="false">
+        Langue
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownLangButton">
+        <li><a class="dropdown-item" href="javascript:void(0);" onclick="changeLanguage('fr')">Français</a></li>
+        <li><a class="dropdown-item" href="javascript:void(0);" onclick="changeLanguage('ar')">العربية</a></li>
+      </ul>
+    </div>
   </nav>
-
- 
-
 
   <div class="container mt-5">
     <div class="text-center mb-4">
@@ -133,12 +107,9 @@
       <p>Il existe de nombreuses variantes des passages de Lorem Ipsum, mais la majorité ont subi des altérations d'une forme ou d'une autre.</p>
     </div>
 
-
-    <div class="container my-5  ">
-        <!-- Stepper -->
-        <div class="stepper-wrapper col-md-10 offset-md-1">
-          <!-- Étape 1 -->
-          <div class="breadcrumb text-center d-flex flex-column align-items-center">
+    <div class="container my-5">
+      <div class="stepper-wrapper col-md-10 offset-md-1">
+        <div class="breadcrumb text-center d-flex flex-column align-items-center">
             <div class="step active">1</div>
             <div class="stepper-label active" style="color:#333">Info personnelle</div>
           </div>
@@ -151,271 +122,261 @@
             <div class="step">2</div>
             <div class="stepper-label">Compétences</div>
           </div>
-          
-          <!-- Ligne -->
           <div class="line"></div>
-          
-          <!-- Étape 3 -->
           <div class="text-center d-flex flex-column align-items-center">
             <div class="step">3</div>
             <div class="stepper-label">Poste recherché</div>
           </div>
         </div>
-    
   
-  <!-- ... (le reste de votre code) ... -->
+        <div class="container">
+          <div class="row">
+            <div class="col-md-10 offset-md-1 form-container mb-5">
+              <form>
+                <section class="form-step active">
+                  <h4>Informations Personnelles</h4>
+                  <div class="mb-3">
+                    <label for="lastName" class="form-label">Nom *</label>
+                    <input type="text" class="form-control" id="lastName" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="firstName" class="form-label">Prénom *</label>
+                    <input type="text" class="form-control" id="firstName" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="phone" class="form-label">Téléphone</label>
+                    <input type="text" class="form-control" id="phone" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Gmail</label>
+                    <input type="email" class="form-control" id="email" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="address" class="form-label">Adresse</label>
+                    <input type="text" class="form-control" id="address" required>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label mb-2">Genre</label>
+                    <div class="row justify-content-between">
+                      <div class="col form-check">
+                        <input class="form-check-input" type="radio" name="gender" id="female">
+                        <label class="form-check-label" for="female">Femme</label>
+                      </div>
+                      <div class="col form-check">
+                        <input class="form-check-input" type="radio" name="gender" id="male">
+                        <label class="form-check-label" for="male">Homme</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label d-block mb-2">Date de naissance *</label>
+                    <div class="row">
+                      <div class="col">
+                        <select class="form-select" id="birthMonth" required>
+                          <option selected>Mois</option>
+                        </select>
+                      </div>
+                      <div class="col">
+                        <select class="form-select" id="birthDay" required>
+                          <option selected>Jour</option>
+                        </select>
+                      </div>
+                      <div class="col">
+                        <select class="form-select" id="birthYear" required>
+                          <option selected>Année</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button" class="next-button btn btn-block w-100 mt-3" style="background-color: #888888; color: white;">Suivant</button>
+                </section>
   
-
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 offset-md-1 form-container mb-5"> <!-- 'mb-5' ajoute une marge en bas -->
-                <!-- Votre formulaire ici -->
-            <form>
-              <section class="form-step active">
-                <h4>Informations Personnelles</h4>
-
-                <div class="mb-3">
-                  <label for="lastName" class="form-label">Nom *</label>
-                  <input type="text" class="form-control" id="lastName" required>
+                <section class="form-step" style="display: none;">
+                  <h2>Compétences et Formation</h2>
+                  <div class="mb-3">
+                    <label for="educationLevel" class="form-label">Niveau d'étude</label>
+                    <select class="form-select" id="educationLevel" required>
+                      <option value="" selected disabled>Choisissez un niveau d'étude</option>
+                      <option value="Pas de diplôme">Pas de diplôme</option>
+                      <option value="Brevet des collèges">Brevet des collèges</option>
+                      <option value="Baccalauréat">Baccalauréat</option>
+                      <option value="Bac+2">Bac+2</option>
+                      <option value="Bac+3">Bac+3</option>
+                      <option value="Bac+5 et plus">Bac+5 et plus</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="degree" class="form-label">Diplôme obtenu</label>
+                    <input type="text" class="form-control" id="degree" required>
+                  </div>
+                  <div class="card-body">
+                    <label for="languages" class="form-label">Langues parlées et niveau de maîtrise</label>
+                    <ul class="list-group">
+                        
+                    </ul>
+                    <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#addLanguageModal" style="background-color:#888888;">
+                        <i class="bi bi-plus"></i> Ajouter une langue
+                    </button>
                 </div>
-                <div class="mb-3">
-                  <label for="firstName" class="form-label">Prénom *</label>
-                  <input type="text" class="form-control" id="firstName" required>
-                </div>               
-                <div class="mb-3">
-                  <label for="firstName" class="form-label">Téléphone </label>
-                  <input type="text" class="form-control" id="firstName" required>
-                </div>
-      
-                <div class="mb-3">
-                  <label for="firstName" class="form-label">Gmail </label>
-                  <input type="text" class="form-control" id="firstName" required>
-                </div>
-      
-                <div class="mb-3">
-                  <label for="firstName" class="form-label">Adresse </label>
-                  <input type="text" class="form-control" id="firstName" required>
-                </div>
-                
-               
-          
-          
-          <!-- Section pour le genre -->
-          <div class="mb-3">
-              <label class="form-label mb-2">Genre </label>
-              <div class="row justify-content-between">
-                <div class="col form-check">
-                  <input class="form-check-input" type="radio" name="gender" id="female">
-                  <label class="form-check-label" for="female">Femme</label>
-                </div>
-                <div class="col form-check">
-                  <input class="form-check-input" type="radio" name="gender" id="male">
-                  <label class="form-check-label" for="male">Homme</label>
-                </div>
-                
-              </div>
-            </div>
-            
-            
-            
-          
-                <div class="mb-3">
-            <label class="form-label d-block mb-2">Date de naissance *</label>
-            <div class="row">
-              <!-- Mois -->
-              <div class="col">
-                <select class="form-select" id="birthMonth" required>
-                    <option selected>Mois</option>
-                  </select>
-              </div>
-              <!-- Jour -->
-              <div class="col">
-                <select class="form-select" id="birthDay" required>
-                  <option selected>Jour</option>
-                 
                   
-                </select>
-              </div>
-              <!-- Année -->
-              <div class="col">
-                <select class="form-select" id="birthYear" required>
-                  <option selected>Année</option>
+                  <div class="mb-3">
+                    <label for="skills" class="form-label">Compétences techniques</label>
+                    <div id="keywordContainerCompetence">
+                      <!-- Les compétences seront ajoutées ici -->
+                    </div>
+                    <input class="form-control" type="text" id="keywordInputCompetence" rows="3" placeholder="Tapez une compétence et appuyez sur Entrée">
+                  </div>
+                  <button type="button" class="prev-button btn btn-block w-100 mt-3" style="background-color: #888888; color: white;">Précédent</button>
+                  <button type="button" class="next-button btn btn-block w-100 mt-3" style="background-color: #888888; color: white;">Suivant</button>
+                </section>
+  
+                <section class="form-step" style="display: none;">
+                  <h2>Poste recherché</h2>
+                  <div class="mb-3">
+                    <label for="jobTitle" class="form-label">Poste recherché</label>
+                    <input type="text" class="form-control" id="jobTitle" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="salaryRangeInput" class="form-label">Fourchette de salaire minimale (dh)</label>
+                    <input type="number" class="form-control" id="salaryRangeInput" placeholder="Salaire souhaité" min="0" step="1" required>
+                  </div>
                   
-                </select>
-              </div>
+                  <div class="mb-3">
+                    <label for="contractTypeInput" class="form-label">Type de contrat</label>
+                    <select class="form-select" id="contractTypeInput">
+                      <option value="">Sélectionnez le type de contrat</option>
+                      <option value="cdi">CDI</option>
+                      <option value="cdd">CDD</option>
+                      <option value="freelance">Freelance</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="workHoursInput" class="form-label">Heures de travail / jour</label>
+                    <input type="number" class="form-control" id="workHoursInput" placeholder="Nombre d'heures">
+                  </div>
+                  <div class="mb-3">
+                    <label for="mobilityInput" class="form-label">Mobilité</label>
+                    <select class="form-select" id="mobilityInput">
+                      <option value="">Sélectionnez la mobilité</option>
+                      <option value="readyToMove">Prêt à déménager</option>
+                      <option value="notReadyToMove">Non prêt à déménager</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="professionalExperience" class="form-label">Nombres d'années d'expériences</label>
+                    <input type="number" class="form-control" id="professionalExperience" min="0" step="1">
+                  </div>      
+                  <button type="button" class="prev-button btn btn-block w-100 mt-3" style="background-color: #888888; color: white;">Précédent</button>
+                  <button type="submit" class="next-button btn btn-block w-100 mt-3" style="background-color: #888888; color: white;">Soumettre</button>
+                </section>
+              </form>
             </div>
-          </div>
-          
-          <button  class="next-button btn btn-block w-100 mt-3" style="background-color: #888888; color: white;">Suivant</button>
-        </section>
-
-        <!-- soumia  -->
-
-        <section class="form-step" style="display: none;">
-          <!-- Contenu de l'étape 2 -->
-          <h2>Compétences et Formation</h2>
-          <!-- Champs de l'étape 2... -->
-          <div class="mb-3">
-            <label for="educationLevel" class="form-label">Niveau d'étude</label>
-            <select class="form-select" id="educationLevel" required>
-                <option value="" selected disabled>Choisissez un niveau d'étude</option>
-                <option value="Pas de diplôme">Pas de diplôme</option>
-                <option value="Brevet des collèges">Brevet des collèges</option>
-                <option value="Baccalauréat">Baccalauréat</option>
-                <option value="Bac+2">Bac+2</option>
-                <option value="Bac+3">Bac+3</option>
-                <option value="Bac+5 et plus">Bac+5 et plus</option>
-            </select>
-        </div>
-        
-        <div class="mb-3">
-            <label for="degree" class="form-label">Diplôme obtenu</label>
-            <input type="text" class="form-control" id="degree" required>
-        </div>
-        
-        <div class="mb-3">
-            <label for="languages" class="form-label">Langues parlées et niveau de maîtrise</label>
-            <input type="text" class="form-control" id="languages" required>
-        </div>
-        
-        
-      
-      <div class="mb-3">
-          <label  for="skills" class="form-label">Compétences techniques</label>
-
-          <div id="keywordContainerCompetence">
-            <!-- Keywords will be added here -->
-        </div>
-        
-          <input class="form-control" type="text" id="keywordInputCompetence" rows="3" placeholder="-">
-      </div>
-              
-        <!-- <div class="mb-3">
-            <label for="cv" class="form-label">CV</label>
-            <input type="file" class="form-control" id="cv" required>
-        </div> -->
-        
-
-        <span class="prev-button">&lt;</span>
-        <span class="skip-button">Skip</span>
-        <span class="next-button">&gt;</span>
-
-        </section>
-        
-        <section class="form-step" style="display: none;">
-          <!-- Contenu de l'étape 3 -->
-            <h2>Description du poste recherché</h2>
-            <!-- Champs de l'étape 3... -->
-            <div class="mb-3">
-              <label for="jobTitleInput" class="form-label">Titre du poste</label>
-              <input type="text" class="form-control" id="jobTitleInput" placeholder="Intitulé du poste" required>
-          </div>
-      
-          <div class="mb-3">
-              <label for="salaryRangeInput" class="form-label">Fourchette de salaire minimale </label>
-              <input type="text" class="form-control" id="salaryRangeInput" placeholder="Salaire souhaité">
-          </div>
-      
-          <div class="mb-3">
-              <label for="contractTypeInput" class="form-label">Type de contrat</label>
-              <select class="form-select" id="contractTypeInput">
-                  <option value="">Sélectionnez le type de contrat</option>
-                  <option value="cdi">CDI</option>
-                  <option value="cdd">CDD</option>
-                  <option value="freelance">Freelance</option>
-                  <!-- Add more options as necessary -->
-              </select>
-          </div>
-      
-          <div class="mb-3">
-              <label for="workHoursInput" class="form-label">Heures de travail / jour</label>
-              <input type="number" class="form-control" id="workHoursInput" placeholder="Nombre d'heures">
-          </div>
-      
-          <div class="mb-3">
-              <label for="mobilityInput" class="form-label">Mobilité</label>
-              <select class="form-select" id="mobilityInput">
-                  <option value="">Sélectionnez la mobilité</option>
-                  <option value="readyToMove">Prêt à déménager</option>
-                  <option value="notReadyToMove">Non prêt à déménager</option>
-                  <!-- Add more options as necessary -->
-              </select>
-          </div>
-      
-          <div class="mb-3">
-            <label for="professionalExperience" class="form-label">Expériences Professionnelles</label>
-            <textarea class="form-control" id="professionalExperience" rows="3"></textarea>
-          </div>
-          <span class="prev-button">&lt;</span>
-          <button  class=" submit-button btn btn-block w-100 mt-3" style="background-color: #888888; color: white;">Soumettre</button>
-          
-
-
-        </section>
-        
-        
-        </form>
-
-
-           
           </div>
         </div>
       </div>
-
-
-
-    
+    </div>
   </div>
+  <div class="modal fade" id="addLanguageModal" tabindex="-1" aria-labelledby="addLanguageModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addLanguageModalLabel">Ajouter une langue</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+            <div class="modal-body">
+                <form id="languageForm">
+                    <div class="mb-3">
+                        <label for="languageSelect" class="form-label">Langue</label>
+                        <select class="form-select" id="languageSelect" required>
+                            <option value="" disabled selected>Veuillez sélectionner</option>
+                            <option value="Arabe">Arabe</option>
+                            <option value="Anglais">Anglais</option>
+                            <option value="Français">Français</option>
+                            <option value="Espagnol">Espagnol</option>
+                            <option value="Autre">Autre</option>
+                        </select>
+                    </div>
+                    <div class="mb-3" id="customLanguageDiv" style="display: none;">
+                        <label for="customLanguageInput" class="form-label">Langue personnalisée</label>
+                        <input type="text" class="form-control" id="customLanguageInput">
+                    </div>
+                    <div class="mb-3">
+                        <label for="proficiencyInput" class="form-label">Niveau</label>
+                        <select class="form-select" id="proficiencyInput" required>
+                            <option value="" disabled selected>Veuillez sélectionner</option>
+                            <option value="Compétence native ou bilingue">Compétence native ou bilingue</option>
+                            <option value="Compétence professionnelle">Compétence professionnelle</option>
+                            <option value="Compétence professionnelle limitée">Compétence professionnelle limitée</option>
+                            <option value="Compétence élémentaire">Compétence élémentaire</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="background-color: #888888;">Enregistrer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
 
-  
-  
-
- 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-// Fonction de changement de langue
-function changeLanguage(language) {
-  // Définir la logique pour changer la langue de la page ici
-  // Vous pourriez avoir besoin de changer la direction du texte
-  // et de charger les traductions appropriées
-  if(language === 'ar') {
-    document.body.dir = 'rtl';
-    // Charger les traductions en arabe
-  } else if(language === 'fr') {
-    document.body.dir = 'ltr';
-    // Charger les traductions en français
-  }
-}
-</script>
+    document.getElementById('languageSelect').addEventListener('change', function() {
+      var customLanguageInput = document.getElementById('customLanguage');
+      if (this.value === 'Autre') {
+        customLanguageInput.style.display = 'block';
+      } else {
+        customLanguageInput.style.display = 'none';
+      }
+    });
 
+    document.querySelectorAll('.next-button').forEach(button => {
+      button.addEventListener('click', () => {
+        const currentSection = button.closest('.form-step');
+        const nextSection = currentSection.nextElementSibling;
+        if (nextSection && nextSection.classList.contains('form-step')) {
+          currentSection.style.display = 'none';
+          nextSection.style.display = 'block';
+        }
+      });
+    });
 
-  
-  <script>
-  // Fonction pour générer les options de mois dynamiquement
-  function generateMonthOptions() {
-    // Tableau de noms de mois en français
-    var months = [
-      'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
-      'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'
-    ];
-    var select = document.getElementById('birthMonth');
-  
-    for (var i = 0; i < months.length; i++) {
-      var option = document.createElement('option');
-      option.value = i + 1; // Janvier = 1, Février = 2, etc.
-      option.innerText = months[i];
-      select.appendChild(option);
-    }
-  }
-  
-  // Appel de la fonction pour générer les mois
-  generateMonthOptions();
+    document.querySelectorAll('.prev-button').forEach(button => {
+      button.addEventListener('click', () => {
+        const currentSection = button.closest('.form-step');
+        const prevSection = currentSection.previousElementSibling;
+        if (prevSection && prevSection.classList.contains('form-step')) {
+          currentSection.style.display = 'none';
+          prevSection.style.display = 'block';
+        }
+      });
+    });
+
+    document.querySelector('.submit-button').addEventListener('click', event => {
+      event.preventDefault();
+      alert('Form submitted successfully!');
+    });
+
   </script>
-  
+ <script>
+    function changeLanguage(language) {
+      if (language === 'ar') {
+        document.body.dir = 'rtl';
+      } else if (language === 'fr') {
+        document.body.dir = 'ltr';
+      }
+    }
+  </script>
+  <script>
+    function generateMonthOptions() {
+      var months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+      var select = document.getElementById('birthMonth');
+      for (var i = 0; i < months.length; i++) {
+        var option = document.createElement('option');
+        option.value = i + 1;
+        option.innerText = months[i];
+        select.appendChild(option);
+      }
+    }
+    generateMonthOptions();
 
-<script>
-    // Fonction pour générer les options d'années dynamiquement
     function generateYearOptions(startYear, endYear) {
       var select = document.getElementById('birthYear');
       for (var year = startYear; year <= endYear; year++) {
@@ -425,134 +386,90 @@ function changeLanguage(language) {
         select.appendChild(option);
       }
     }
-    
-    // Appel de la fonction avec les années souhaitées
     generateYearOptions(1964, 2010);
-    </script>
 
+    function generateDayOptions() {
+      var select = document.getElementById('birthDay');
+      for (var day = 1; day <= 31; day++) {
+        var option = document.createElement('option');
+        option.value = day;
+        option.innerText = day;
+        select.appendChild(option);
+      }
+    }
+    generateDayOptions();
 
+    function addCompetence(competence) {
+    var container = document.getElementById('keywordContainerCompetence');
+    var span = document.createElement('span');
+    span.className = 'keyword';
+    span.textContent = competence;
 
-  
-  <script>
-  // Fonction pour générer les options de jours dynamiquement
-  function generateDayOptions() {
-    var select = document.getElementById('birthDay');
+    var removeIcon = document.createElement('span');
+    removeIcon.className = 'remove-icon';
+    removeIcon.innerHTML = '&times;';
+    removeIcon.addEventListener('click', function() {
+      container.removeChild(span);
+    });
 
-// Supposons que vous avez aussi un sélecteur de mois avec l'identifiant 'birthMonth'
-var monthSelect = document.getElementById('birthMonth');
-
-monthSelect.addEventListener('change', function(e) {
-  var month = parseInt(e.target.value, 10);
-  var daysInMonth = new Date(2020, month, 0).getDate(); // 2020 est une année bissextile pour février
-
-  var daySelect = document.getElementById('birthDay');
-  daySelect.innerHTML = ''; // Effacer les jours précédents
-
-  // Générer de nouveaux jours en fonction du mois sélectionné
-  for (var day = 1; day <= daysInMonth; day++) {
-    var option = document.createElement('option');
-    option.value = day;
-    option.innerText = day;
-    daySelect.appendChild(option);
+    span.appendChild(removeIcon);
+    container.appendChild(span);
   }
-});
-
-
-
+    document.getElementById('keywordInputCompetence').addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        var competence = event.target.value.trim();
+        if (competence) {
+          addCompetence(competence);
+          event.target.value = '';
+        }
+      }
+    });
 
     
-  }
-  
-  // Appel de la fonction pour générer les jours
-  generateDayOptions();
 
-  
+   
+
+    
+
+    
   </script>
-  
-
   <script>
-    // script.js
-    document.addEventListener('DOMContentLoaded', function () {
-      const steps = document.querySelectorAll('.form-step');
-      const nextBtns = document.querySelectorAll('.next-button');
-      const prevBtns = document.querySelectorAll('.prev-button');
-      const skipBtns = document.querySelectorAll('.skip-button');
-      let currentStep = 0;
-
-      function showStep(step) {
-        steps.forEach((s, i) => {
-          s.style.display = i === step ? 'block' : 'none';
-          s.classList.toggle('active', i === step);
-        });
-        const breadcrumbs = document.querySelectorAll('.breadcrumb .step');
-        breadcrumbs.forEach((crumb, i) => {
-          crumb.classList.toggle('active', i <= step);
-        });
-      }
-
-      nextBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          if (currentStep < steps.length - 1) {
-            currentStep++;
-            showStep(currentStep);
-          }
-        });
-      });
-
-      prevBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          if (currentStep > 0) {
-            currentStep--;
-            showStep(currentStep);
-          }
-        });
-      });
-
-      skipBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          if (currentStep < steps.length - 1) {
-            currentStep++;
-            showStep(currentStep);
-          }
-        });
-      });
-
-      showStep(currentStep); // Initialize first step
+    document.getElementById('languageSelect').addEventListener('change', function() {
+        const customLanguageDiv = document.getElementById('customLanguageDiv');
+        if (this.value === 'Autre') {
+            customLanguageDiv.style.display = 'block';
+        } else {
+            customLanguageDiv.style.display = 'none';
+        }
     });
-  </script>
-
-<script>
-  // Function to add a keyword
-  function addKeyword() {
-      var input = document.getElementById("keywordInputCompetence");
-      var keyword = input.value.trim();
-      if (keyword !== "") {
-          var container = document.getElementById("keywordContainerCompetence");
-          var span = document.createElement("span");
-          span.textContent = keyword;
-          span.className = "keyword";
-          container.appendChild(span);
-          // Clear the input
-          input.value = "";
-      }
-  }
-
-  // Add keyword when Enter key is pressed
-  document.getElementById("keywordInputCompetence").addEventListener("keypress", function(event) {
-      if (event.key === "Enter") {
-          addKeyword();
-      }
-  });
-
-  // Add keyword when clicked outside the input
-  document.addEventListener("click", function(event) {
-      var input = document.getElementById("keywordInputCompetence");
-      if (event.target !== input) {
-          addKeyword();
-      }
-  });
-</script>
+    
+    document.getElementById('languageForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const selectedLanguage = document.getElementById('languageSelect').value;
+        const customLanguage = document.getElementById('customLanguageInput').value;
+        const language = selectedLanguage === 'Autre' ? customLanguage : selectedLanguage;
+        const proficiency = document.getElementById('proficiencyInput').value;
+    
+        if (language && proficiency) {
+            const listGroup = document.querySelector('.list-group');
+            const newListItem = document.createElement('li');
+            newListItem.className = 'list-group-item';
+            newListItem.innerHTML = `${language} <span class="badge bg-primary">${proficiency}</span>`;
+            listGroup.appendChild(newListItem);
+    
+            // Fermer la modale
+            var addLanguageModal = new bootstrap.Modal(document.getElementById('addLanguageModal'));
+            addLanguageModal.hide();
+    
+            // Réinitialiser le formulaire
+            document.getElementById('languageForm').reset();
+            document.getElementById('customLanguageDiv').style.display = 'none';
+        }
+    });
+    </script>
   
-
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
