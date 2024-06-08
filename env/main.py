@@ -36,6 +36,11 @@ async def main():
     item2 = Item(name="Second Item", description="This is the second sample item")
     await item2.insert()
     print("Second Item inserted!")
+    
+    item3 = Item(name="Third Item", description="This is the third sample item")
+    await item3.insert()
+    print("Third Item inserted!")
+
 
 if __name__ == "__main__":
     asyncio.run(main())
