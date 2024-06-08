@@ -104,7 +104,7 @@
   <div class="container mt-5">
     <div class="text-center mb-4">
       <h2>Rejoignez-nous</h2>
-      <p>Il existe de nombreuses variantes des passages de Lorem Ipsum, mais la majorité ont subi des altérations d'une forme ou d'une autre.</p>
+      <p>Explorez des Opportunités de Carrière Personnalisées et Maximisez Vos Chances de Succès.</p>
     </div>
 
     <div class="container my-5">
@@ -150,6 +150,10 @@
                   <div class="mb-3">
                     <label for="email" class="form-label">Gmail</label>
                     <input type="email" class="form-control" id="email" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="password" class="form-label">Mot de passe</label>
+                    <input type="password" class="form-control" id="password" required>
                   </div>
                   <div class="mb-3">
                     <label for="address" class="form-label">Adresse</label>
@@ -207,7 +211,10 @@
                   </div>
                   <div class="mb-3">
                     <label for="degree" class="form-label">Diplôme obtenu</label>
-                    <input type="text" class="form-control" id="degree" required>
+                    <div id="keywordContainerDiplome">
+                      <!-- Les compétences seront ajoutées ici -->
+                    </div>
+                    <input type="text" class="form-control" id="keywordInputDiplome" placeholder="Tapez un diplôme et appuyez sur Entrée" required>
                   </div>
                   <div class="card-body">
                     <label for="languages" class="form-label">Langues parlées et niveau de maîtrise</label>
@@ -220,7 +227,7 @@
                 </div>
                   
                   <div class="mb-3">
-                    <label for="skills" class="form-label">Compétences techniques</label>
+                    <label  class="form-label">Compétences techniques</label>
                     <div id="keywordContainerCompetence">
                       <!-- Les compétences seront ajoutées ici -->
                     </div>
@@ -428,10 +435,6 @@
 
     
 
-   
-
-    
-
     
   </script>
   <script>
@@ -466,6 +469,35 @@
             document.getElementById('languageForm').reset();
             document.getElementById('customLanguageDiv').style.display = 'none';
         }
+    });
+    </script>
+  <!-- add diplome -->
+    <script>
+     function addDiplome(Diplome) {
+    var container = document.getElementById('keywordContainerDiplome');
+    var span = document.createElement('span');
+    span.className = 'keyword';
+    span.textContent = Diplome;
+
+    var removeIcon = document.createElement('span');
+    removeIcon.className = 'remove-icon';
+    removeIcon.innerHTML = '&times;';
+    removeIcon.addEventListener('click', function() {
+      container.removeChild(span);
+    });
+
+    span.appendChild(removeIcon);
+    container.appendChild(span);
+  }
+    document.getElementById('keywordInputDiplome').addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        var Diplome = event.target.value.trim();
+        if (Diplome) {
+          addDiplome(Diplome);
+          event.target.value = '';
+        }
+      }
     });
     </script>
   
