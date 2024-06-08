@@ -34,20 +34,20 @@
   </style>
 </head>
 <body>
-  <img src="img/logoApp.jpg" alt="Votre Logo" style="display: block; margin: 10px auto; width: 90px; height: 80px; margin-top:30px;">
+  <img src="../static/img/logoApp.jpg" alt="Votre Logo" style="display: block; margin: 10px auto; width: 90px; height: 80px; margin-top:30px;">
   <div class="container">
     <div class="row">
       <div class="col-md-6">
-        <a href="lien_vers_recruteur.html" class="card">
-          <img class="card-img-top" src="img/recruteur.jpg" alt="Recruteur">
+        <a href="{{ url_for('lien_vers_recruteur')}}" class="card">
+          <img class="card-img-top" src="../static/img/recruteur.jpg" alt="Recruteur">
           <div class="card-body">
             <h4 class="card-title text-center" style="color:black">Recruteur</h4>
           </div>
         </a>
       </div>
       <div class="col-md-6">
-        <a href="inscription1.html" class="card">
-          <img class="card-img-top" src="img/employé.jpg" alt="Employé">
+        <a href="{{ url_for('inscription') }}" class="card">
+          <img class="card-img-top" src="../static/img/employé.jpg" alt="Employé">
           <div class="card-body">
             <h4 class="card-title text-center" style="color:black">Employé</h4>
           </div>
