@@ -7,7 +7,7 @@ def home():
     return render_template('index.html')
 
 @app.route('/inscription', methods=['GET', 'POST'])
-def inscription():
+def inscription1():
     if request.method == 'POST':
         # Logique pour gérer l'inscription
         return redirect(url_for('home'))
