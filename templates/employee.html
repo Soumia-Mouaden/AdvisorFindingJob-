@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Espace employé</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="styleNavFooter.css">
-  <link rel="stylesheet" href="styleRecrut.css">
+  <link rel="stylesheet" href="../static/css/styleNavFooter.css">
+  <link rel="stylesheet" href="../static/css/styleRecrut.css">
   <style>
   html, body {
     height: 100%;
@@ -95,7 +95,7 @@
         <div class="search-bar">
           <!-- Search input -->
           <div class="search-input">
-            <img src="assets/icone-loupe-gris.png" alt="Search Icon"><!-- Assurez-vous que le chemin d'accès à l'icône est correct -->
+            <img src="../assets/icone-loupe-gris.png" alt="Search Icon"><!-- Assurez-vous que le chemin d'accès à l'icône est correct -->
             <input type="text" placeholder="Rechercher un emploi">
           </div>
           <!-- Location filter -->
@@ -111,17 +111,18 @@
         </div>
       </div>
 
-      <div class="job-card" id="job1">
-        <div class="deal-label">Deall!</div>
-        <div class="job-details">
-          <h2 class="job-title">Jardinier</h2>
-          <div class="job-tags">
-            <div class="company-name">En ligne</div>
-          </div>
-          <div class="company-name">Deall Jobs</div>
-        </div>
-        <div class="apply-button">Easy Apply</div>
-      </div>
+       {% for offer in similar_offers %}
+            <div class="job-card" id="job{{ loop.index }}">
+                <div class="deal-label">Deall!</div>
+                <div class="job-details">
+                    <h2 class="job-title">{{ offer['title'] }}</h2>
+                    <div class="job-tags">
+                        <div class="company-name">{{ offer['company'] }}</div>
+                    </div>
+                    <div class="job-description">{{ offer['description'] }}</div>
+                </div>
+                <div class="apply-button" data-toggle="modal" data-target="#applyModal" data-title="{{ offer['title'] }}" data-company="{{ offer['company'] }}">Easy Apply</div>            </div>
+            {% endfor %}
       <!-- More job cards follow... -->
     </div>
   </div>
@@ -175,69 +176,58 @@
     </div>
   </footer>
 
-  <!-- Modal -->
-<div class="modal fade" id="customModal" tabindex="-1" aria-labelledby="customModalTitle" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header" >
-        <img src="../static/img/logoBg.png" alt="flag" class="modal-flag img-fluid" style="width:10%; height:10%;">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+<!-- Modal -->
+<div class="modal fade" id="applyModal" tabindex="-1" role="dialog" aria-labelledby="applyModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <!-- Modal Body -->
+          <div class="modal-body">
+              <h4 id="modalJobTitle" style="color:rgb(73, 73, 73)" class="mt-3">Détailler</h4>
+              <h6 id="modalJobSubtitle" style="color:rgb(110, 109, 109)" class="mb-4">Précisez les critères de votre futur emploi</h6>
+              <form>
+                  <div class="form-group">
+                      <label for="jobTitle">Titre du poste</label>
+                      <input type="text" class="form-control" id="jobTitle" placeholder="Intitulé du poste" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="salaryRange">Fourchette de salaire</label>
+                      <input type="text" class="form-control" id="salaryRange" placeholder="Salaire souhaité">
+                  </div>
+                  <div class="form-group">
+                      <label for="contractType">Type de contrat</label>
+                      <select class="custom-select" id="contractType">
+                          <option value="">Sélectionnez le type de contrat</option>
+                          <option value="cdi">CDI</option>
+                          <option value="cdd">CDD</option>
+                          <option value="freelance">Freelance</option>
+                          <!-- Add more options as necessary -->
+                      </select>
+                  </div>
+                  <div class="form-group">
+                      <label for="workHours">Heures de travail / jour</label>
+                      <input type="number" class="form-control" id="workHours" placeholder="Nombre d'heures">
+                  </div>
+                  <div class="form-group">
+                      <label for="mobility">Mobilité</label>
+                      <select class="custom-select" id="mobility">
+                          <option value="">Sélectionnez la mobilité</option>
+                          <option value="readyToMove">Prêt à déménager</option>
+                          <option value="notReadyToMove">Non prêt à déménager</option>
+                          <!-- Add more options as necessary -->
+                      </select>
+                  </div>
+                  <div class="form-group">
+                      <label for="otherPreferences">Autres préférences</label>
+                      <textarea class="form-control" id="otherPreferences" rows="3"></textarea>
+                  </div>
+              </form>
+          </div>
+          <!-- Modal Footer -->
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+              <button type="button" class="btn btn-custom">Confirmer</button>
+          </div>
       </div>
-      <!-- Modal Body -->
-      <div class="modal-body">
-        <h4 id="jobTitle" style="color:rgb(73, 73, 73)" class="mt-3">Détailler</h4>
-        <h6 id="jobTitle" style="color:rgb(110, 109, 109)" class="mb-4">Précisez les critères de votre futur emploi</h6>
-        <form>
-          <div class="form-group">
-            <label for="jobTitle">Titre du poste</label>
-            <input type="text" class="form-control" id="jobTitle" placeholder="Intitulé du poste" required>
-          </div>
-
-          <div class="form-group">
-            <label for="salaryRange">Fourchette de salaire</label>
-            <input type="text" class="form-control" id="salaryRange" placeholder="Salaire souhaité">
-          </div>
-          <div class="form-group">
-            <label for="contractType">Type de contrat</label>
-            <select class="custom-select" id="contractType">
-              <option value="">Sélectionnez le type de contrat</option>
-              <option value="cdi">CDI</option>
-              <option value="cdd">CDD</option>
-              <option value="freelance">Freelance</option>
-              <!-- Add more options as necessary -->
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="workHours">Heures de travail / jour</label>
-            <input type="number" class="form-control" id="workHours" placeholder="Nombre d'heures">
-          </div>
-          <div class="form-group">
-            <label for="mobility">Mobilité</label>
-            <select class="custom-select" id="mobility">
-              <option value="">Sélectionnez la mobilité</option>
-              <option value="readyToMove">Prêt à déménager</option>
-              <option value="notReadyToMove">Non prêt à déménager</option>
-              <!-- Add more options as necessary -->
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="otherPreferences">Autres préférences</label>
-            <textarea class="form-control" id="otherPreferences" rows="3"></textarea>
-          </div>
-        </form>
-      </div>
-
-      <!-- Modal Footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-        <button type="button" class="btn btn-custom">Confirmer</button>
-      </div>
-
-    </div>
   </div>
 </div>
 

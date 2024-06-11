@@ -188,6 +188,20 @@ footer .btn-primary:hover {
       background-color: #ffffff;
       
     }
+    .btn-signup:hover {
+      background-color: #0D82D2; /* Couleur de fond du bouton au survol */
+    }
+
+    .btn-login {
+      background-color: #f5f5f5; /* Couleur de fond du bouton Se connecter */
+      color: #4D4D4D; /* Couleur du texte du bouton Se connecter */
+      margin-right: 10px; /* Espacement à droite */
+    }
+
+    .btn-login:hover {
+      background-color: #e0e0e0; /* Couleur de fond du bouton au survol */
+    }
+
   </style>
 
 </head>
@@ -211,7 +225,9 @@ footer .btn-primary:hover {
           <a class="nav-link" href="#contact">Contact</a>
         </li>
       </ul>
+      <button class="btn btn-login" type="button"><a href="{{ url_for('connexion') }}" style="color:#4D4D4D; text-decoration: none;">Se connecter</a></button>
       <button class="btn btn-signup" type="submit"><a href="{{ url_for('recruteur_employee') }}" style="color:#ffffff; text-decoration: none;">S’inscrire</a></button>
+
     </div>
   </nav>
 </header>
