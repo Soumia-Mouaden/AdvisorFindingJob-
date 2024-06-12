@@ -45,7 +45,7 @@ def scrape_and_store_data():
     jobs_data = []
 
     try:
-        for page in range(1, 50):  # Parcourir 1 page for testing, change to (1, 16) for full scraping
+        for page in range(1, 150):  # Parcourir 1 page for testing, change to (1, 16) for full scraping
             url = f"{base_url}?page={page}"   
             response = requests.get(url, headers=headers)
             response.raise_for_status()  
