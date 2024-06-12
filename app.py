@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import asyncio
 import secrets
 from bson import ObjectId
@@ -9,19 +10,34 @@ from motor.motor_asyncio import AsyncIOMotorClient
 import asyncio
 import os
 from datetime import datetime
+=======
+from flask import Flask, render_template, request, redirect, url_for
+import os
+import google.generativeai as genai
+>>>>>>> b6785c78cc6dee24f25921c80b4e81e30eb3ce52
 
-model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
 app = Flask(__name__)
-app.secret_key = secrets.token_hex(16)
 
-# Remplacez les valeurs suivantes par vos informations MongoDB Atlas
-MONGO_URI = "mongodb+srv://zahirikram09:if6tTu7zYm5LxJ4i@forsati.sgoglff.mongodb.net/"
+# Set your API key for Google Generative AI
+os.environ["GEMINI_API_KEY"] = "AIzaSyBoqdqzlcO3gt6xs2QKpxpXJTturgZvCb4"
 
-client = MongoClient(MONGO_URI, tlsCAFile=certifi.where())
+# Configure the Generative AI model
+genai.configure(api_key=os.environ["GEMINI_API_KEY"])
 
-db = client['Advisor']
-users_collection = db['User']
-jobs_collection = db['Job']
+# Model configuration
+generation_config = {
+    "temperature": 1,
+    "top_p": 0.95,
+    "top_k": 64,
+    "max_output_tokens": 8192,
+    "response_mime_type": "text/plain",
+}
+
+model = genai.GenerativeModel(
+    model_name="gemini-1.5-pro",
+    generation_config=generation_config,
+)
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -47,8 +63,8 @@ def recruteur_employee():
 @app.route('/recruteur')
 def lien_vers_recruteur():
     return render_template('lien_vers_recruteur.html')
-# Ajouter d'autres routes si nécessaire
 
+<<<<<<< HEAD
 @app.route('/submitInscription', methods=['POST'])
 def submitInscription():
     # Récupérez les données du formulaire d'inscription
@@ -111,21 +127,34 @@ def submitInscription():
 
 @app.route('/submitConnection', methods=['POST'])
 def submitConnection():
+=======
+@app.route('/predict', methods=['POST'])
+def predict():
+>>>>>>> b6785c78cc6dee24f25921c80b4e81e30eb3ce52
     if request.method == 'POST':
-        email = request.form.get('email')
-        password = request.form.get('password')
+        data = request.get_json()  # Get JSON data from the request
+        user_message = data.get('message', '')  # Extract user's message from the JSON
 
-        # Chercher l'utilisateur dans la base de données
-        user = users_collection.find_one({'email': email, 'password': password})
-        
-        if user:
-             session['user_id'] = str(user['_id'])
-             session['email'] = user['email']
-             return redirect(url_for('employee'))
+        if user_message:  # Ensure there's a user message to process
+            # Start chat session
+            chat_session = model.start_chat(
+                history=[
+                    {"role": "user", "parts": [user_message]},
+                ]
+            )
+
+            # Generate response by sending user's message
+            response = chat_session.send_message(user_message)
+
+            # Extract the generated response
+            response_text = response.text.strip()
+
+            # Return the response in text/plain format
+            return response_text
         else:
-            # Si l'utilisateur n'existe pas
-            return "Utilisateur non trouvé", 401
+            return "No message received", 400
 
+<<<<<<< HEAD
     return redirect(url_for('connexion'))
 
 @app.route('/employee')
@@ -224,6 +253,7 @@ def update_poste_recherche():
         return redirect(url_for('employee'))
     else:
         return jsonify({"error": "User not found"}), 404
+=======
+>>>>>>> b6785c78cc6dee24f25921c80b4e81e30eb3ce52
 if __name__ == '__main__':
-
     app.run(debug=True)
