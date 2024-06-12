@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import asyncio
 import secrets
 from bson import ObjectId
@@ -10,17 +9,24 @@ from motor.motor_asyncio import AsyncIOMotorClient
 import asyncio
 import os
 from datetime import datetime
-=======
 from flask import Flask, render_template, request, redirect, url_for
 import os
 import google.generativeai as genai
->>>>>>> b6785c78cc6dee24f25921c80b4e81e30eb3ce52
 
 app = Flask(__name__)
 
 # Set your API key for Google Generative AI
 os.environ["GEMINI_API_KEY"] = "AIzaSyBoqdqzlcO3gt6xs2QKpxpXJTturgZvCb4"
+app.secret_key = secrets.token_hex(16)
 
+# Remplacez les valeurs suivantes par vos informations MongoDB Atlas
+MONGO_URI = "mongodb+srv://zahirikram09:if6tTu7zYm5LxJ4i@forsati.sgoglff.mongodb.net/"
+
+client = MongoClient(MONGO_URI, tlsCAFile=certifi.where())
+
+db = client['Advisor']
+users_collection = db['User']
+jobs_collection = db['Job']
 # Configure the Generative AI model
 genai.configure(api_key=os.environ["GEMINI_API_KEY"])
 
@@ -64,7 +70,6 @@ def recruteur_employee():
 def lien_vers_recruteur():
     return render_template('lien_vers_recruteur.html')
 
-<<<<<<< HEAD
 @app.route('/submitInscription', methods=['POST'])
 def submitInscription():
     # Récupérez les données du formulaire d'inscription
@@ -125,12 +130,29 @@ def submitInscription():
     session['email'] = data['email']
     return redirect(url_for('employee'))
 
+    
 @app.route('/submitConnection', methods=['POST'])
 def submitConnection():
-=======
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
+
+        # Chercher l'utilisateur dans la base de données
+        user = users_collection.find_one({'email': email, 'password': password})
+        
+        if user:
+             session['user_id'] = str(user['_id'])
+             session['email'] = user['email']
+             return redirect(url_for('employee'))
+        else:
+            # Si l'utilisateur n'existe pas
+            return "Utilisateur non trouvé", 401
+
+    return redirect(url_for('connexion'))
+
+
 @app.route('/predict', methods=['POST'])
 def predict():
->>>>>>> b6785c78cc6dee24f25921c80b4e81e30eb3ce52
     if request.method == 'POST':
         data = request.get_json()  # Get JSON data from the request
         user_message = data.get('message', '')  # Extract user's message from the JSON
@@ -154,7 +176,6 @@ def predict():
         else:
             return "No message received", 400
 
-<<<<<<< HEAD
     return redirect(url_for('connexion'))
 
 @app.route('/employee')
@@ -253,7 +274,5 @@ def update_poste_recherche():
         return redirect(url_for('employee'))
     else:
         return jsonify({"error": "User not found"}), 404
-=======
->>>>>>> b6785c78cc6dee24f25921c80b4e81e30eb3ce52
 if __name__ == '__main__':
     app.run(debug=True)
