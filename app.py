@@ -1,12 +1,14 @@
 import asyncio
 import secrets
 from bson import ObjectId
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, jsonify, render_template, request, redirect, url_for, session
 import certifi
 from pymongo import MongoClient
 from sentence_transformers import SentenceTransformer, util
 from motor.motor_asyncio import AsyncIOMotorClient
 import asyncio
+import os
+from datetime import datetime
 
 model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
 app = Flask(__name__)
@@ -46,6 +48,66 @@ def recruteur_employee():
 def lien_vers_recruteur():
     return render_template('lien_vers_recruteur.html')
 # Ajouter d'autres routes si nécessaire
+
+@app.route('/submitInscription', methods=['POST'])
+def submitInscription():
+    # Récupérez les données du formulaire d'inscription
+    lastName = request.form.get('lastName')
+    firstName = request.form.get('firstName')
+    email = request.form.get('email')
+    phone = request.form.get('phone')
+    password = request.form.get('password')
+    address = request.form.get('address')
+    gender = request.form.get('gender')
+    birth_date = datetime(year=int(request.form['birthYear']), 
+                          month=int(request.form['birthMonth']), 
+                          day=int(request.form['birthDay']))
+    educationLevel = request.form.get('educationLevel')
+    # keywordInputDiplome = request.form.get('keywordInputDiplome')
+    diplomes_str = request.form.get('keywordInputDiplome')
+    diplomes = [diplome.strip() for diplome in diplomes_str.split(',') if diplome.strip()]
+    
+    # languages = request.form.get('languages')
+    competencies_str = request.form.get('keywordInputCompetence')
+    competencies = [competence.strip() for competence in competencies_str.split(',') if competence.strip()]
+    
+    jobTitle = request.form.get('jobTitle')
+    salaryRangeInput = request.form.get('salaryRangeInput')
+    contractTypeInput = request.form.get('contractTypeInput')
+    workHoursInput = request.form.get('workHoursInput')
+    mobilityInput = request.form.get('mobilityInput')
+    professionalExperience = request.form.get('professionalExperience')
+
+    poste_recherche = {
+        'poste': jobTitle,
+        'salaire_min': salaryRangeInput,
+        'type_contrat': contractTypeInput,
+        'horaire': workHoursInput,
+        'mobilite': mobilityInput,
+        'nb_annees_experience': professionalExperience
+    }
+
+    # Insérez les données dans MongoDB
+    data = {
+        'nom': lastName,
+        'prenom': firstName,
+        'email': email,
+        'tele': phone,
+        'adresse': address,
+        'genre': gender,
+        'date_naissance': birth_date,
+        'niveau_etude': educationLevel,
+        'diplomes_obtenus': diplomes,
+        # 'langues': langues,
+        'competences': competencies,
+        'poste_recherche': poste_recherche,
+        'password': password
+    }
+
+    users_collection.insert_one(data)
+    session['user_id'] = str(data['_id'])
+    session['email'] = data['email']
+    return redirect(url_for('employee'))
 
 @app.route('/submitConnection', methods=['POST'])
 def submitConnection():
@@ -129,6 +191,39 @@ async def get_similar_jobs(user_skills):
     similar_job_ids = [job_ids[idx] for idx in top_k_indices]
 
     return similar_job_ids
+
+@app.route('/update_poste_recherche', methods=['POST'])
+def update_poste_recherche():
+    data = request.json
+    user_id = session.get('user_id')
+
+    if not user_id:
+        return jsonify({"error": "User not logged in"}), 403
+
+    poste_recherche = {
+        "poste": data['poste'],
+        "salaire_min": data['salaire_min'],
+        "type_contrat": data['type_contrat'],
+        "horaire": data['horaire'],
+        "mobilite": data['mobilite'],
+        "nb_annees_experience": data.get('nb_annees_experience', 0)
+    }
+    competences = data['competences']
+
+    result = users_collection.update_one(
+        {'_id': ObjectId(user_id)},
+        {
+            '$set': {
+                'poste_recherche': poste_recherche,
+                'competences': competences
+            }
+        }
+    )
+
+    if result.matched_count == 1:
+        return redirect(url_for('employee'))
+    else:
+        return jsonify({"error": "User not found"}), 404
 if __name__ == '__main__':
 
     app.run(debug=True)

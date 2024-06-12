@@ -87,7 +87,7 @@
   <nav class="navbar navbar-expand-lg bg-blue">
     <div class="container container-fluid justify-content-center">
       <div class="centered-logo">
-        <img src="../static/img/logoAppConexion.png" alt="Logo" width="70">
+        <img src="img/logoAppConexion.png" alt="Logo" width="70">
       </div>
     </div>
     <div class="dropdown">
@@ -132,61 +132,59 @@
         <div class="container">
           <div class="row">
             <div class="col-md-10 offset-md-1 form-container mb-5">
-              <form>
+              <form action="/submitInscription" method="POST">
                 <section class="form-step active">
                   <h4>Informations Personnelles</h4>
                   <div class="mb-3">
-                    <label for="lastName" class="form-label">Nom *</label>
-                    <input type="text" class="form-control" id="lastName" required>
+                    <label for="lastName"   >Nom *</label>
+                    <input type="text" id="lastName" class="form-control" name="lastName"required>
                   </div>
                   <div class="mb-3">
-                    <label for="firstName" class="form-label">Prénom *</label>
-                    <input type="text" class="form-control" id="firstName" required>
+                    <label for="firstName"   >Prénom *</label>
+                    <input type="text" id="firstName" class="form-control" name="firstName" required>
                   </div>
                   <div class="mb-3">
-                    <label for="phone" class="form-label">Téléphone</label>
-                    <input type="text" class="form-control" id="phone" required>
+                    <label for="phone"   >Téléphone</label>
+                    <input type="text"  id="phone" class="form-control" name="phone" required>
                   </div>
                   <div class="mb-3">
-                    <label for="email" class="form-label">Gmail</label>
-                    <input type="email" class="form-control" id="email" required>
+                    <label for="email"   >Gmail *</label>
+                    <input type="email"  class="form-control" id="email" name="email" required>
                   </div>
                   <div class="mb-3">
-                    <label for="password" class="form-label">Mot de passe</label>
-                    <input type="password" class="form-control" id="password" required>
+                    <label for="password"   >Mot de passe *</label>
+                    <input type="password"  class="form-control" id="password" name="password" required>
                   </div>
                   <div class="mb-3">
-                    <label for="address" class="form-label">Adresse</label>
-                    <input type="text" class="form-control" id="address" required>
+                    <label for="address"   >Adresse</label>
+                    <input type="text" class="form-control"id="address" name="address" >
                   </div>
                   <div class="mb-3">
                     <label class="form-label mb-2">Genre</label>
                     <div class="row justify-content-between">
-                      <div class="col form-check">
-                        <input class="form-check-input" type="radio" name="gender" id="female">
-                        <label class="form-check-label" for="female">Femme</label>
-                      </div>
-                      <div class="col form-check">
-                        <input class="form-check-input" type="radio" name="gender" id="male">
-                        <label class="form-check-label" for="male">Homme</label>
-                      </div>
+
+        <select id="gender" name="gender" class="form-select" >
+            <option value="male">Masculin</option>
+            <option value="female">Féminin</option>
+        </select>
+
                     </div>
                   </div>
                   <div class="mb-3">
                     <label class="form-label d-block mb-2">Date de naissance *</label>
                     <div class="row">
                       <div class="col">
-                        <select class="form-select" id="birthMonth" required>
+                        <select  class="form-select"    id="birthMonth" name="birthMonth" >
                           <option selected>Mois</option>
                         </select>
                       </div>
                       <div class="col">
-                        <select class="form-select" id="birthDay" required>
+                        <select  class="form-select"    id="birthDay" name="birthDay"  >
                           <option selected>Jour</option>
                         </select>
                       </div>
                       <div class="col">
-                        <select class="form-select" id="birthYear" required>
+                        <select  class="form-select"    id="birthYear" name="birthYear" >
                           <option selected>Année</option>
                         </select>
                       </div>
@@ -198,8 +196,8 @@
                 <section class="form-step" style="display: none;">
                   <h2>Compétences et Formation</h2>
                   <div class="mb-3">
-                    <label for="educationLevel" class="form-label">Niveau d'étude</label>
-                    <select class="form-select" id="educationLevel" required>
+                    <label for="educationLevel" class="form-label"  >Niveau d'étude</label>
+                    <select class="form-select"  name="educationLevel" required>
                       <option value="" selected disabled>Choisissez un niveau d'étude</option>
                       <option value="Pas de diplôme">Pas de diplôme</option>
                       <option value="Brevet des collèges">Brevet des collèges</option>
@@ -207,17 +205,20 @@
                       <option value="Bac+2">Bac+2</option>
                       <option value="Bac+3">Bac+3</option>
                       <option value="Bac+5 et plus">Bac+5 et plus</option>
-                    </select>
+                  </select>
+                  
                   </div>
                   <div class="mb-3">
-                    <label for="degree" class="form-label">Diplôme obtenu</label>
+                    <label for="degree" class="form-label"   >Diplôme obtenu</label>
                     <div id="keywordContainerDiplome">
                       <!-- Les compétences seront ajoutées ici -->
                     </div>
-                    <input type="text" class="form-control" id="keywordInputDiplome" placeholder="Tapez un diplôme et appuyez sur Entrée" required>
+                    <input type="text" name="keywordInputDiplome" id="keywordInputDiplome" 
+                    class="form-control" placeholder="Tapez un diplôme et appuyez sur Entrée"  >
+
                   </div>
                   <div class="card-body">
-                    <label for="languages" class="form-label">Langues parlées et niveau de maîtrise</label>
+                    <label for="languages" class="form-label" >Langues parlées et niveau de maîtrise</label>
                     <ul class="list-group">
                         
                     </ul>
@@ -227,11 +228,11 @@
                 </div>
                   
                   <div class="mb-3">
-                    <label  class="form-label">Compétences techniques</label>
+                    <label  class="form-label" >Compétences techniques</label>
                     <div id="keywordContainerCompetence">
                       <!-- Les compétences seront ajoutées ici -->
                     </div>
-                    <input class="form-control" type="text" id="keywordInputCompetence" rows="3" placeholder="Tapez une compétence et appuyez sur Entrée">
+                    <input type="text"name="keywordInputCompetence" id="keywordInputCompetence" rows="3" class="form-control" placeholder="Tapez une compétence et appuyez sur Entrée">
                   </div>
                   <button type="button" class="prev-button btn btn-block w-100 mt-3" style="background-color: #888888; color: white;">Précédent</button>
                   <button type="button" class="next-button btn btn-block w-100 mt-3" style="background-color: #888888; color: white;">Suivant</button>
@@ -240,17 +241,17 @@
                 <section class="form-step" style="display: none;">
                   <h2>Poste recherché</h2>
                   <div class="mb-3">
-                    <label for="jobTitle" class="form-label">Poste recherché</label>
-                    <input type="text" class="form-control" id="jobTitle" required>
+                    <label for="jobTitle" class="form-label"  >Poste recherché</label>
+                    <input type="text" class="form-control" name="jobTitle" required>
                   </div>
                   <div class="mb-3">
-                    <label for="salaryRangeInput" class="form-label">Fourchette de salaire minimale (dh)</label>
-                    <input type="number" class="form-control" id="salaryRangeInput" placeholder="Salaire souhaité" min="0" step="1" required>
+                    <label  class="form-label" for="salaryRangeInput"   >Fourchette de salaire minimale (dh)</label>
+                    <input type="number" class="form-control" name="salaryRangeInput" placeholder="Salaire souhaité" min="0" step="1" >
                   </div>
                   
                   <div class="mb-3">
-                    <label for="contractTypeInput" class="form-label">Type de contrat</label>
-                    <select class="form-select" id="contractTypeInput">
+                    <label class="form-label" for="contractTypeInput"   >Type de contrat</label>
+                    <select     class="form-select" name="contractTypeInput">
                       <option value="">Sélectionnez le type de contrat</option>
                       <option value="cdi">CDI</option>
                       <option value="cdd">CDD</option>
@@ -258,23 +259,28 @@
                     </select>
                   </div>
                   <div class="mb-3">
-                    <label for="workHoursInput" class="form-label">Heures de travail / jour</label>
-                    <input type="number" class="form-control" id="workHoursInput" placeholder="Nombre d'heures">
+                    <label for="workHoursInput" 
+                    class="form-label"  >Horaire</label>
+                    <input type="number"  name="workHoursInput"  class="form-control" placeholder="Nombre d'heures">
                   </div>
                   <div class="mb-3">
-                    <label for="mobilityInput" class="form-label">Mobilité</label>
-                    <select class="form-select" id="mobilityInput">
+                    <label for="mobilityInput" class="form-label"  >Mobilité</label>
+                    <select   class="form-select"   name="mobilityInput">
                       <option value="">Sélectionnez la mobilité</option>
-                      <option value="readyToMove">Prêt à déménager</option>
-                      <option value="notReadyToMove">Non prêt à déménager</option>
+                      <option value="notReadyToMove">nationnal</option>
+                      <option value="readyToMove">Internationnal</option>
+                     
                     </select>
                   </div>
                   <div class="mb-3">
-                    <label for="professionalExperience" class="form-label">Nombres d'années d'expériences</label>
-                    <input type="number" class="form-control" id="professionalExperience" min="0" step="1">
+                    <label class="form-label" for="professionalExperience"   >Nombres d'années d'expériences</label>
+                    <input type="number" class="form-control"name="professionalExperience" id="professionalExperience" min="0" step="1">
                   </div>      
                   <button type="button" class="prev-button btn btn-block w-100 mt-3" style="background-color: #888888; color: white;">Précédent</button>
                   <button type="submit" class="next-button btn btn-block w-100 mt-3" style="background-color: #888888; color: white;">Soumettre</button>
+                  
+                  <!-- <input type="submit" value="Envoyer"> -->
+
                 </section>
               </form>
             </div>
@@ -293,8 +299,8 @@
             <div class="modal-body">
                 <form id="languageForm">
                     <div class="mb-3">
-                        <label for="languageSelect" class="form-label">Langue</label>
-                        <select class="form-select" id="languageSelect" required>
+                        <label for="languageSelect"   >Langue</label>
+                        <select   class="form-select"  id="languageSelect" >
                             <option value="" disabled selected>Veuillez sélectionner</option>
                             <option value="Arabe">Arabe</option>
                             <option value="Anglais">Anglais</option>
@@ -304,12 +310,12 @@
                         </select>
                     </div>
                     <div class="mb-3" id="customLanguageDiv" style="display: none;">
-                        <label for="customLanguageInput" class="form-label">Langue personnalisée</label>
-                        <input type="text" class="form-control" id="customLanguageInput">
+                        <label for="customLanguageInput"   >Langue personnalisée</label>
+                        <input type="text"  id="customLanguageInput">
                     </div>
                     <div class="mb-3">
-                        <label for="proficiencyInput" class="form-label">Niveau</label>
-                        <select class="form-select" id="proficiencyInput" required>
+                        <label for="proficiencyInput"   >Niveau</label>
+                        <select   class="form-select" id="proficiencyInput" required>
                             <option value="" disabled selected>Veuillez sélectionner</option>
                             <option value="Compétence native ou bilingue">Compétence native ou bilingue</option>
                             <option value="Compétence professionnelle">Compétence professionnelle</option>
@@ -317,7 +323,8 @@
                             <option value="Compétence élémentaire">Compétence élémentaire</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary" style="background-color: #888888;">Enregistrer</button>
+                    <!-- <button type="submit" class="btn btn-primary" style="background-color: #888888;">Enregistrer</button> -->
+                    <button class="btn btn-primary" style="background-color: #888888;">Enregistrer</button>
                 </form>
             </div>
         </div>
@@ -433,6 +440,14 @@
       }
     });
 
+    document.querySelector('form').addEventListener('submit', function(event) {
+    var competencies = [];
+    document.querySelectorAll('#keywordContainerCompetence .keyword').forEach(function(span) {
+      competencies.push(span.textContent.replace('×', '').trim());
+    });
+    document.getElementById('keywordInputCompetence').value = competencies.join(',');
+  });
+
     
 
     
@@ -499,6 +514,14 @@
         }
       }
     });
+
+    document.querySelector('form').addEventListener('submit', function(event) {
+    var diploms = [];
+    document.querySelectorAll('#keywordContainerDiplome .keyword').forEach(function(span) {
+      diploms.push(span.textContent.replace('×', '').trim());
+    });
+    document.getElementById('keywordInputDiplome').value = diploms.join(',');
+  });
     </script>
   
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>

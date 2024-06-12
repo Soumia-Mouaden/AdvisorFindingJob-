@@ -9,6 +9,62 @@
   <link rel="stylesheet" href="../static/css/styleNavFooter.css">
   <link rel="stylesheet" href="../static/css/styleRecrut.css">
   <style>
+    #modalJobTitle {
+    margin-top: 20px;
+    font-size: 24px;
+    color: #000;
+}
+.company-logo {
+    width: 50px; /* Ajustez la largeur de l'image selon vos besoins */
+    height: 50px; /* Ajustez la hauteur de l'image selon vos besoins */
+    overflow: hidden;
+    border-radius: 50%; /* Pour afficher l'image sous forme de cercle */
+}
+
+.company-logo img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%; /* Assurez-vous que l'image est affichée comme un cercle */
+}
+.bold {
+    font-weight: bold;
+}
+
+#modalCompany,
+#modalDescription,
+#modalLocation,
+#modalDates,
+#modalSector,
+#modalFunction,
+#modalExperience,
+#modalEducation,
+#modalContract,
+#modalCompetences {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #4a4a4a;
+    line-height: 1.5; /* Espacement entre les lignes */
+}
+
+#modalCompetences {
+    font-size: 16px;
+}
+
+/* Style pour le span */
+#modalJobTitle span,
+#modalCompany span,
+#modalDescription span,
+#modalLocation span,
+#modalDates span,
+#modalSector span,
+#modalFunction span,
+#modalExperience span,
+#modalEducation span,
+#modalContract span,
+#modalCompetences span {
+    font-weight: normal; /* Remettre le poids de la police à normal */
+}
+
   html, body {
     height: 100%;
     margin: 0;
@@ -53,6 +109,7 @@
       border-color: #7F56D9; /* Border color if needed */
       color: white; /* text color */
     }
+    
     /* Further customization can be added as needed */
   </style>
 </style>
@@ -86,8 +143,7 @@
     </nav>
   </header>
   <div class="container mt-3 mb-3">
-  <button class="details-button" data-toggle="modal" data-target="#customModal">Mes préferences</button></div>
-
+  <button class="details-button" data-toggle="modal" data-target="#customModal">Modifier le poste recherché</button>
   <div class="content">
     <div class="job-listing-container w-70" >
       <div class="search-section">
@@ -95,7 +151,7 @@
         <div class="search-bar">
           <!-- Search input -->
           <div class="search-input">
-            <img src="../assets/icone-loupe-gris.png" alt="Search Icon"><!-- Assurez-vous que le chemin d'accès à l'icône est correct -->
+            <img src="../static/img/assets/icone-loupe-gris.png" alt="Search Icon"><!-- Assurez-vous que le chemin d'accès à l'icône est correct -->
             <input type="text" placeholder="Rechercher un emploi">
           </div>
           <!-- Location filter -->
@@ -113,16 +169,33 @@
 
        {% for offer in similar_offers %}
             <div class="job-card" id="job{{ loop.index }}">
-                <div class="deal-label">Deall!</div>
-                <div class="job-details">
+              <div class="company-logo">
+                <img src="{{ offer['image'] }}" alt="Company Logo" class="company-logo-circle">
+            </div>                <div class="job-details">
                     <h2 class="job-title">{{ offer['title'] }}</h2>
                     <div class="job-tags">
                         <div class="company-name">{{ offer['company'] }}</div>
                     </div>
                     <div class="job-description">{{ offer['description'] }}</div>
                 </div>
-                <div class="apply-button" data-toggle="modal" data-target="#applyModal" data-title="{{ offer['title'] }}" data-company="{{ offer['company'] }}">Easy Apply</div>            </div>
-            {% endfor %}
+                <div class="apply-button" data-toggle="modal" data-target="#applyModal"
+                data-title="{{ offer['title'] }}"
+                data-company="{{ offer['company'] }}"
+                data-description="{{ offer['job_description'] }}"
+                data-localisation="{{ offer['localisation'] }}"
+                data-start_date="{{ offer['start_date'] }}"
+                data-end_date="{{ offer['end_date'] }}"
+                data-sector="{{ offer['sector'] }}"
+                data-function="{{ offer['function'] }}"
+                data-experience="{{ offer['experience_required'] }}"
+                data-education="{{ offer['education_level'] }}"
+                data-contract="{{ offer['contract_type'] }}"
+                data-competences="{{ offer['competences'] }}"
+                data-url="{{ offer['url_offre'] }}"
+                data-image="{{ offer['image'] }}">
+ Postuler                 </div>      
+                </div>      
+                {% endfor %}
       <!-- More job cards follow... -->
     </div>
   </div>
@@ -176,58 +249,111 @@
     </div>
   </footer>
 
+ 
 <!-- Modal -->
 <div class="modal fade" id="applyModal" tabindex="-1" role="dialog" aria-labelledby="applyModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
       <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+              <h5 class="modal-title" id="applyModalLabel">Job Details</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
           <!-- Modal Body -->
           <div class="modal-body">
-              <h4 id="modalJobTitle" style="color:rgb(73, 73, 73)" class="mt-3">Détailler</h4>
-              <h6 id="modalJobSubtitle" style="color:rgb(110, 109, 109)" class="mb-4">Précisez les critères de votre futur emploi</h6>
-              <form>
-                  <div class="form-group">
-                      <label for="jobTitle">Titre du poste</label>
-                      <input type="text" class="form-control" id="jobTitle" placeholder="Intitulé du poste" required>
-                  </div>
-                  <div class="form-group">
-                      <label for="salaryRange">Fourchette de salaire</label>
-                      <input type="text" class="form-control" id="salaryRange" placeholder="Salaire souhaité">
-                  </div>
-                  <div class="form-group">
-                      <label for="contractType">Type de contrat</label>
-                      <select class="custom-select" id="contractType">
-                          <option value="">Sélectionnez le type de contrat</option>
-                          <option value="cdi">CDI</option>
-                          <option value="cdd">CDD</option>
-                          <option value="freelance">Freelance</option>
-                          <!-- Add more options as necessary -->
-                      </select>
-                  </div>
-                  <div class="form-group">
-                      <label for="workHours">Heures de travail / jour</label>
-                      <input type="number" class="form-control" id="workHours" placeholder="Nombre d'heures">
-                  </div>
-                  <div class="form-group">
-                      <label for="mobility">Mobilité</label>
-                      <select class="custom-select" id="mobility">
-                          <option value="">Sélectionnez la mobilité</option>
-                          <option value="readyToMove">Prêt à déménager</option>
-                          <option value="notReadyToMove">Non prêt à déménager</option>
-                          <!-- Add more options as necessary -->
-                      </select>
-                  </div>
-                  <div class="form-group">
-                      <label for="otherPreferences">Autres préférences</label>
-                      <textarea class="form-control" id="otherPreferences" rows="3"></textarea>
-                  </div>
-              </form>
+              <div class="job-info">
+                <h4 id="modalJobTitle" class="mt-3"><span></span></h4>
+                <p id="modalCompany"><strong>Entreprise :</strong> <span></span></p>
+                <p id="modalDescription"><strong>Description :</strong> <span></span></p>
+                <p id="modalLocation"><strong>Localisation :</strong> <span></span></p>
+                <p id="modalDates"><strong>Dates :</strong> <span></span></p>
+                <p id="modalSector"><strong>Secteur :</strong> <span></span></p>
+                <p id="modalFunction"><strong>Fonction :</strong> <span></span></p>
+                <p id="modalExperience"><strong>Expérience Requise :</strong> <span></span></p>
+                <p id="modalEducation"><strong>Niveau d'Éducation :</strong> <span></span></p>
+                <p id="modalContract"><strong>Type de Contrat :</strong> <span></span></p>
+                <p id="modalCompetences"><strong>Compétences :</strong> <span></span></p>
+                
+              </div>
           </div>
           <!-- Modal Footer -->
           <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-              <button type="button" class="btn btn-custom">Confirmer</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <a id="applyButton" href="#" class="btn btn-custom">Continue to Apply</a>
           </div>
       </div>
+  </div>
+</div>
+
+<div class="modal fade" id="customModal" tabindex="-1" role="dialog" aria-labelledby="customModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title" id="customModalLabel">Détailler</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <h4 id="modalJobTitle" style="color:rgb(73, 73, 73)" class="mt-3">Détailler</h4>
+        <h6 style="color:rgb(110, 109, 109)" class="mb-4">Précisez les critères de votre futur emploi</h6>
+        <form>
+          <div class="form-group">
+            <label for="jobTitle">Titre du poste</label>
+            <input type="text" class="form-control" id="jobTitle" placeholder="Intitulé du poste" required>
+          </div>
+
+          <div class="form-group">
+            <label for="salaryRange">Fourchette de salaire</label>
+            <input type="text" class="form-control" id="salaryRange" placeholder="Salaire souhaité">
+          </div>
+          <div class="form-group">
+            <label for="contractType">Type de contrat</label>
+            <select class="custom-select" id="contractType">
+              <option value="">Sélectionnez le type de contrat</option>
+              <option value="cdi">CDI</option>
+              <option value="cdd">CDD</option>
+              <option value="freelance">Freelance</option>
+              <!-- Add more options as necessary -->
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="workHours">Heures de travail / jour</label>
+            <input type="number" class="form-control" id="workHours" placeholder="Nombre d'heures">
+          </div>
+          <div class="form-group">
+            <label for="mobility">Mobilité</label>
+            <select class="custom-select" id="mobility">
+              <option value="">Sélectionnez la mobilité</option>
+              <option value="readyToMove">Prêt à déménager</option>
+              <option value="notReadyToMove">Non prêt à déménager</option>
+              <!-- Add more options as necessary -->
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Compétences techniques</label>
+            <div id="keywordContainerCompetence">
+              <!-- Les compétences seront ajoutées ici -->
+            </div>
+            <input class="form-control" type="text" id="keywordInputCompetence" rows="3" placeholder="Tapez une compétence et appuyez sur Entrée">
+          </div>
+          <div class="form-group">
+            <label for="otherPreferences">Autres préférences</label>
+            <textarea class="form-control" id="otherPreferences" rows="3"></textarea>
+          </div>
+        </form>
+      </div>
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+        <button type="button" class="btn btn-custom" id="confirmButton">Confirmer</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -238,6 +364,99 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+ $('#applyModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget); // Button that triggered the modal
+    var title = button.data('title');
+    var company = button.data('company');
+    var description = button.data('description');
+    var location = button.data('localisation');
+    var dates = button.data('start_date') + ' to ' + button.data('end_date');
+    var sector = button.data('sector');
+    var functionRole = button.data('function');
+    var experience = button.data('experience');
+    var education = button.data('education');
+    var contract = button.data('contract');
+    var competences = button.data('competences');
+    var url = button.data('url');
+
+    var modal = $(this);
+    modal.find('.modal-body #modalJobTitle span').text(title);
+    modal.find('.modal-body #modalCompany span').text(company);
+    modal.find('.modal-body #modalDescription span').text(description);
+    modal.find('.modal-body #modalLocation span').text(location);
+    modal.find('.modal-body #modalDates span').text(dates);
+    modal.find('.modal-body #modalSector span').text(sector);
+    modal.find('.modal-body #modalFunction span').text(functionRole);
+    modal.find('.modal-body #modalExperience span').text(experience);
+    modal.find('.modal-body #modalEducation span').text(education);
+    modal.find('.modal-body #modalContract span').text(contract);
+    modal.find('.modal-body #modalCompetences span').text(competences);
+    modal.find('.modal-footer #applyButton').attr('href', url);
+});
+
+</script>
+<!-- Reste de votre HTML -->
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+      const keywordInput = document.getElementById('keywordInputCompetence');
+      const keywordContainer = document.getElementById('keywordContainerCompetence');
+  
+      keywordInput.addEventListener('keypress', function (e) {
+          if (e.key === 'Enter') {
+              e.preventDefault();
+              const keyword = keywordInput.value.trim();
+              if (keyword) {
+                  const keywordSpan = document.createElement('span');
+                  keywordSpan.classList.add('badge', 'badge-primary', 'm-1');
+                  keywordSpan.textContent = keyword;
+                  keywordSpan.onclick = function () {
+                      keywordContainer.removeChild(keywordSpan);
+                  };
+                  keywordContainer.appendChild(keywordSpan);
+                  keywordInput.value = '';
+              }
+          }
+      });
+  
+      document.getElementById('confirmButton').addEventListener('click', async () => {
+          const jobTitle = document.getElementById('jobTitle').value;
+          const salaryRange = document.getElementById('salaryRange').value;
+          const contractType = document.getElementById('contractType').value;
+          const workHours = document.getElementById('workHours').value;
+          const mobility = document.getElementById('mobility').value;
+          const otherPreferences = document.getElementById('otherPreferences').value;
+  
+          const competences = Array.from(keywordContainer.children).map(span => span.textContent);
+  
+          const data = {
+              poste: jobTitle,
+              salaire_min: parseFloat(salaryRange),
+              type_contrat: contractType,
+              horaire: workHours,
+              mobilite: mobility,
+              competences: competences,
+              nb_annees_experience: parseInt(otherPreferences) // Adjust as needed
+          };
+  
+          const response = await fetch('/update_poste_recherche', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)
+          });
+  
+          if (response.ok) {
+              alert('Poste recherché mis à jour avec succès!');
+              location.reload(); // Reload the page to reflect changes
+          } else {
+              alert('Erreur lors de la mise à jour du poste recherché.');
+          }
+      });
+  });
+</script>
+
 </body>
 
 </html>
