@@ -1,285 +1,106 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Landing Page</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  
-  <script type="application/javascript">
-    (function(w,d,s,o,f,js,fjs){w[o]=w[o]||function(){(w[o].q=w[o].q||[]).push(arguments);};(js=d.createElement(s)),(fjs=d.getElementsByTagName(s)[0]);js.id=o;js.src=f;js.async=1;js.referrerPolicy = "origin";fjs.parentNode.insertBefore(js,fjs);})(window,document,"script","copilot","https://script.copilot.live/v1/copilot.min.js?tkn=cat-6fvackmx");
-    copilot("init",{});
-    </script>
-  
-  
-  
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    .navbar {
-      background-color: #ffffff; /* Couleur de fond de la barre de navigation */
-    }
-
-    .navbar-brand img {
-      height: 24px; 
-    }
-
-    .nav-link {
-      color: #4D4D4D; /* Couleur des liens de navigation */
-      margin-right: 16px; /* Espacement entre les liens */
-    }
-
-    .nav-link:hover {
-      color: #333333; /* Couleur au survol */
-    }
-
-    .btn-signup {
-      background-color: #2194F3; /* Couleur de fond du bouton S'inscrire */
-      color: white; /* Couleur du texte du bouton S'inscrire */
-      border-radius: 2px; /* Rayon de bordure du bouton */
-      padding: 10px 22px; /* Rembourrage intérieur */
-    }
-
-    .btn-signup:hover {
-      background-color: #0D82D2; /* Couleur de fond du bouton au survol */
-    }
-
-    .hero-section {
-      background-color: #F5F7FA; /* Couleur de fond de la section héroïque */
-      padding: 66px 100px; /* Rembourrage intérieur */
-    }
-
-    /* ... Autres styles personnalisés ... */
-    .opportunity-section {
-      background-color: #F5F7FA;  /* Couleur de fond spécifiée dans votre design */
-      color: rgb(48, 48, 48); /* Texte en blanc comme dans le design */
-      padding: 50px 0; /* Espacement vertical */
-    }
-    
-    .opportunity-section h2 {
-      font-size: 30px; /* Taille de police basée sur votre design */
-      font-weight: bold; /* Gras comme indiqué */
-      margin-bottom: 0; /* Pas de marge en bas */
-    }
-   
-    .btn {
-  transition: background-color 0.3s ease-in-out;
-  text-decoration: none;
-  font-size: 16px; /* Vous pouvez ajuster la taille de la police comme vous le souhaitez */
-}
-
-.btn:hover {
-  background-color: #187bcd; /* Couleur du bouton au survol (ajustez selon le design) */
-}
-
-.recruit-section .btn {
-  transition: background-color 0.3s ease-in-out;
-  text-decoration: none;
-  font-size: 16px; /* Taille du texte du bouton */
-}
-
-.recruit-section .btn:hover {
-  background-color: #187bcd; /* Couleur du bouton au survol (ajustez selon le design) */
-}
-
-.skills-section .btn {
-  transition: background-color 0.3s ease-in-out;
-  text-decoration: none;
-  font-size: 16px; /* Taille du texte du bouton */
-}
-
-.skills-section .btn:hover {
-  background-color: #187bcd; /* Couleur de bouton au survol */
-}
-
-.contact-section .form-control {
-  border: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre portée légère pour un effet de profondeur */
-}
-
-.contact-section .form-control:focus {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Ombre portée plus prononcée au focus */
-  border-color: #2096f3; /* Couleur de bordure au focus */
-}
-
-.contact-section .btn:hover {
-  background-color: #0073e6; /* Une couleur un peu plus foncée pour le bouton au survol */
-}
-
-footer {
-  background-color: #0a83db;
-  color: #ffffff;
-}
-
-footer img {
-  width: auto;
-  height: 50px; /* Ajustez en fonction de la taille de votre logo */
-  margin-bottom: 16px;
-}
-
-footer p {
-  margin-bottom: 16px;
-}
-
-footer a {
-  color: #ffffff;
-  text-decoration: none;
-}
-
-footer a:hover {
-  text-decoration: underline;
-}
-
-footer h5 {
-  margin-bottom: 14px;
-}
-
-footer ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-footer ul li a {
-  color: #ffffff;
-  transition: color 0.2s ease-in-out;
-}
-
-footer ul li a:hover {
-  color: #d1e9ff;
-}
-
-footer .form-control {
-  background-color: #f1f4f8;
-  border: none;
-  border-radius: 20px;
-  color: #0a83db;
-}
-
-footer .btn-primary {
-  background-color: #ffffff;
-  color: #0a83db;
-  border: none;
-  border-radius: 20px;
-  text-transform: uppercase;
-  padding: 10px 24px;
-}
-
-footer .btn-primary:hover {
-  background-color: #e2e6ea;
-}
-
-@media (min-width: 768px) {
-      .navbar-collapse {
-        display: none;
-      }
-    }
-
-    @media (min-width: 768px) {
-      .navbar-toggler {
-        display: block;
-      }
-    }
-
-    .dropdown-menu {
-      background-color: #ffffff;
-      
-    }
-  </style>
-
+  <link rel="stylesheet" href="../static/assetsChat/style.css">
 </head>
+
 <body id="acceuil">
- 
-<header class="sticky-top">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-    <a class="navbar-brand" href="#acceuil"><img src="../static/img/logoApp.jpg" alt="Logo" style="width:35%; height:35%;"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="#acceuil">Accueil</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#apropos">À propos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#contact">Contact</a>
-        </li>
-      </ul>
-      <button class="btn btn-signup" type="submit"><a href="{{ url_for('recruteur_employee') }}" style="color:#ffffff; text-decoration: none;">S’inscrire</a></button>
-    </div>
-  </nav>
-</header>
 
-<main class="hero-section">
-  <div class="container">
-    <div class="row justify-content-between">
-      <div class="col-lg-6">
-            <h1>Trouvez Votre Prochain Emploi <span style="color:#468fd8;">avec Facilité</span>
-            </h1>
-        </br>
-            <p class="lead"  style="color:#595c5f;">Explorez des Opportunités de Carrière Personnalisées et Maximisez Vos Chances de Succès</p>
-        </br>
-            <button class="btn btn-primary btn-discover"><a href="{{ url_for('recruteur_employee') }}" style="color:#ffffff; text-decoration: none;">Découvrir</a></button>
+  <header class="sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+      <a class="navbar-brand" href="#acceuil"><img src="../static/img/logoApp.jpg" alt="Logo"
+          style="width:35%; height:35%;"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#acceuil">Accueil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#apropos">À propos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+        </ul>
+        <button class="btn btn-signup" type="submit"><a href="{{ url_for('recruteur_employee') }}"
+            style="color:#ffffff; text-decoration: none;">S’inscrire</a></button>
       </div>
+    </nav>
+  </header>
 
-      <div><img
-        src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/64106b2e-2b21-44a2-8e87-6daa712c918b/9e619532-0af1-4071-92eb-4937dd348ffd?org_if_sml=134724&amp;force_format=original"
-        alt="Plandetravail4913088" class="home-plandetravail491" /></div>
+  <main class="hero-section">
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="col-lg-6">
+          <h1>Trouvez Votre Prochain Emploi <span style="color:#468fd8;">avec Facilité</span>
+          </h1>
+          </br>
+          <p class="lead" style="color:#595c5f;">Explorez des Opportunités de Carrière Personnalisées et Maximisez Vos
+            Chances de Succès</p>
+          </br>
+          <button class="btn btn-primary btn-discover"><a href="{{ url_for('recruteur_employee') }}"
+              style="color:#ffffff; text-decoration: none;">Découvrir</a></button>
+        </div>
+
+        <div><img
+            src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/64106b2e-2b21-44a2-8e87-6daa712c918b/9e619532-0af1-4071-92eb-4937dd348ffd?org_if_sml=134724&amp;force_format=original"
+            alt="Plandetravail4913088" class="home-plandetravail491" /></div>
+      </div>
     </div>
-  </div>
-</main>
+  </main>
 
-<section class="services-section py-5" id="apropos">
+  <section class="services-section py-5" id="apropos">
     <div class="container text-center">
       <!-- Titre de la section -->
       <h1 class="section-title mb-4">Nos services</h1>
       <p class="section-description mb-5">Découvrez pourquoi notre application web est indispensable</p>
-      
+
       <!-- Cartes des services -->
       <div class="row">
         <!-- Service 1 -->
         <div class="col-md-4 mb-4">
           <div class="card service-card h-100">
             <div class="card-body">
-                <img
+              <img
                 src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/64106b2e-2b21-44a2-8e87-6daa712c918b/89ede19a-236c-4a1f-85e7-f98f5cf59cb4?org_if_sml=14836&amp;force_format=original"
-                alt="rechercheTr13189"/>
+                alt="rechercheTr13189" />
               <h5 class="card-title">Trouver un emploi</h5>
-<br><a href="#emploie" class="btn btn-primary">Savoir plus</a>
+              <br><a href="#emploie" class="btn btn-primary">Savoir plus</a>
             </div>
           </div>
         </div>
 
         <div class="col-md-4 mb-4">
-            <div class="card service-card h-100">
-              <div class="card-body">
-                <img
-                  src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/64106b2e-2b21-44a2-8e87-6daa712c918b/376eecb1-3665-42bd-8b21-937c90b7d409?org_if_sml=19579&amp;force_format=original"
-                  />
-                <h5 class="card-title">Recruter</h5>
-               <br><a href="#recruter" class="btn btn-primary">Savoir plus</a>
-              </div>
+          <div class="card service-card h-100">
+            <div class="card-body">
+              <img
+                src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/64106b2e-2b21-44a2-8e87-6daa712c918b/376eecb1-3665-42bd-8b21-937c90b7d409?org_if_sml=19579&amp;force_format=original" />
+              <h5 class="card-title">Recruter</h5>
+              <br><a href="#recruter" class="btn btn-primary">Savoir plus</a>
             </div>
           </div>
+        </div>
 
-          <div class="col-md-4 mb-4">
-            <div class="card service-card h-100">
-              <div class="card-body">
-                <img
-                  src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/64106b2e-2b21-44a2-8e87-6daa712c918b/0ab4317b-1a66-41bd-8ba7-51d5bd2bfefd?org_if_sml=111125&amp;force_format=original"
-                   />
-                <h5 class="card-title">Compétences requises</h5>
-             <br> <a href="#Competences" class="btn btn-primary">Savoir plus</a>
-              </div>
+        <div class="col-md-4 mb-4">
+          <div class="card service-card h-100">
+            <div class="card-body">
+              <img
+                src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/64106b2e-2b21-44a2-8e87-6daa712c918b/0ab4317b-1a66-41bd-8ba7-51d5bd2bfefd?org_if_sml=111125&amp;force_format=original" />
+              <h5 class="card-title">Compétences requises</h5>
+              <br> <a href="#Competences" class="btn btn-primary">Savoir plus</a>
             </div>
           </div>
-        
+        </div>
+
         <!-- Service 2 -->
         <!-- Répétez la structure ci-dessus pour les autres services -->
       </div>
@@ -296,17 +117,17 @@ footer .btn-primary:hover {
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6">
-            <img
-            src="../static/img/i1.png"
-            alt="rechercheTr13189" style="width: 50%;"/>
+          <img src="../static/img/i1.png" alt="rechercheTr13189" style="width: 50%;" />
         </div>
         <div class="col-lg-6" id="recruter">
           <h2 style="color: #333333; font-weight: bold; font-size: 25px; margin-bottom: 20px;">Trouver un emploi</h2>
           <p style="color: #666666; font-size: 16px; margin-bottom: 20px;">
-            Parcourez une variété de professions, découvrez des opportunités personnalisées et préparez-vous à franchir la prochaine étape de votre carrière.
+            Parcourez une variété de professions, découvrez des opportunités personnalisées et préparez-vous à franchir
+            la prochaine étape de votre carrière.
           </p>
           <br>
-          <a href="{{ url_for('inscription1') }}" class="btn" style="background-color: #2194f3; color: #ffffff; padding: 10px 30px; border-radius: 30px; font-weight: 500;">Découvrir</a>
+          <a href="{{ url_for('inscription1') }}" class="btn"
+            style="background-color: #2194f3; color: #ffffff; padding: 10px 30px; border-radius: 30px; font-weight: 500;">Découvrir</a>
         </div>
       </div>
     </div>
@@ -318,15 +139,15 @@ footer .btn-primary:hover {
         <div class="col-lg-6">
           <h2 style="color: #333333; font-weight: bold; font-size: 25px; margin-bottom: 20px;">Recruter</h2>
           <p style="color: #666666; font-size: 16px; margin-bottom: 20px;">
-            Accédez à un large éventail de talents et trouvez les candidats idéaux qui correspondent aux valeurs et aux besoins de votre entreprise.
+            Accédez à un large éventail de talents et trouvez les candidats idéaux qui correspondent aux valeurs et aux
+            besoins de votre entreprise.
           </p>
           <br>
-          <a href="{{ url_for('inscription1') }}" class="btn" style="background-color: #2194f3; color: #ffffff; padding: 10px 30px; border-radius: 30px;  font-weight: 500;">Découvrir</a>
+          <a href="{{ url_for('inscription1') }}" class="btn"
+            style="background-color: #2194f3; color: #ffffff; padding: 10px 30px; border-radius: 30px;  font-weight: 500;">Découvrir</a>
         </div>
         <div class="col-lg-6 text-right" id="Competences">
-            <img
-            src="../static/img/i2.png"
-            alt="recruter13189" class="img-fluid " style="width: 50%;" />
+          <img src="../static/img/i2.png" alt="recruter13189" class="img-fluid " style="width: 50%;" />
         </div>
       </div>
     </div>
@@ -336,27 +157,28 @@ footer .btn-primary:hover {
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6">
-            <img
-            src="../static/img/i3.png"
-            alt="competance23189" class="img-fluid" style="width: 50%;"/>
+          <img src="../static/img/i3.png" alt="competance23189" class="img-fluid" style="width: 50%;" />
         </div>
         <div class="col-lg-6">
           <h2 style="color: #333333; font-weight: bold; font-size: 25px; margin-bottom: 20px;">Compétences requises</h2>
           <p style="color: #666666; font-size: 16px; margin-bottom: 20px;">
-            Développez les compétences clés demandées par le marché et augmentez votre potentiel professionnel grâce à notre plateforme.
+            Développez les compétences clés demandées par le marché et augmentez votre potentiel professionnel grâce à
+            notre plateforme.
           </p>
           <br>
-          <a href="{{ url_for('inscription1') }}" class="btn" style="background-color: #2194f3; color: #ffffff; padding: 10px 30px; border-radius: 30px; font-weight: 500;">Découvrir</a>
+          <a href="{{ url_for('inscription1') }}" class="btn"
+            style="background-color: #2194f3; color: #ffffff; padding: 10px 30px; border-radius: 30px; font-weight: 500;">Découvrir</a>
         </div>
       </div>
     </div>
   </section>
-  
+
   <section class="contact-section py-5" style="background-color: #e6f0fd;" id="contact">
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <h2 class="section-title text-center mb-4" style="color: #0075d6; font-size: 40px; font-weight: bold;">Contactez-Nous</h2>
+          <h2 class="section-title text-center mb-4" style="color: #0075d6; font-size: 40px; font-weight: bold;">
+            Contactez-Nous</h2>
           <form class="contact-form">
             <div class="form-group mb-3">
               <input type="text" class="form-control" placeholder="Nom" required style="border-radius: 20px;">
@@ -368,10 +190,12 @@ footer .btn-primary:hover {
               <input type="text" class="form-control" placeholder="Sujet" required style="border-radius: 20px;">
             </div>
             <div class="form-group mb-4">
-              <textarea class="form-control" placeholder="Votre Message" rows="4" required style="border-radius: 20px;"></textarea>
+              <textarea class="form-control" placeholder="Votre Message" rows="4" required
+                style="border-radius: 20px;"></textarea>
             </div>
             <div class="text-center">
-              <button type="submit" class="btn" style="background-color: #2096f3; color: white; padding: 10px 25px; border-radius: 30px; text-transform: uppercase;">Envoyer</button>
+              <button type="submit" class="btn"
+                style="background-color: #2096f3; color: white; padding: 10px 25px; border-radius: 30px; text-transform: uppercase;">Envoyer</button>
             </div>
           </form>
         </div>
@@ -392,13 +216,17 @@ footer .btn-primary:hover {
           <p>&copy; 2024 Votre Entreprise. Tous droits réservés.</p>
           <!-- Social links -->
           <div>
-            <a href="votre-lien-facebook"><img src="../static/img/facebook.png" style="width:13%; height:13%;" alt="Facebook"></a>
-            <a href="votre-lien-twitter"><img src="../static/img/twitter.png" style="width:10%; height:10%;"  alt="Twitter"></a>
-            <a href="votre-lien-instagram"><img src="../static/img/instagram.png" style="width:13%; height:13%;" alt="Instagram"></a>
-            <a href="votre-lien-linkedin"><img src="../static/img/linkedin.png" style="width:13%; height:13%;" alt="LinkedIn"></a>
+            <a href="votre-lien-facebook"><img src="../static/img/facebook.png" style="width:13%; height:13%;"
+                alt="Facebook"></a>
+            <a href="votre-lien-twitter"><img src="../static/img/twitter.png" style="width:10%; height:10%;"
+                alt="Twitter"></a>
+            <a href="votre-lien-instagram"><img src="../static/img/instagram.png" style="width:13%; height:13%;"
+                alt="Instagram"></a>
+            <a href="votre-lien-linkedin"><img src="../static/img/linkedin.png" style="width:13%; height:13%;"
+                alt="LinkedIn"></a>
           </div>
         </div>
-  
+
         <!-- Column for 'Société' links -->
         <div class="col-md-3 mt-4 mt-md-0">
           <h5>Société</h5>
@@ -407,7 +235,7 @@ footer .btn-primary:hover {
             <li><a href="#contact">Contactez-nous</a></li>
           </ul>
         </div>
-  
+
         <!-- Column for 'Support' links -->
         <div class="col-md-3 mt-4 mt-md-0">
           <h5>Support</h5>
@@ -416,13 +244,14 @@ footer .btn-primary:hover {
             <li><a href="#contact">Aide</a></li>
           </ul>
         </div>
-  
+
         <!-- Column for 'Restez à jour' subscription form -->
         <div class="col-md-3 mt-4 mt-md-0">
           <h5>Restez à jour</h5>
           <form class="subscribe-form">
             <div class="form-group">
-              <input type="email" class="form-control" id="emailSubscribe" aria-describedby="emailHelp" placeholder="Votre adresse email">
+              <input type="email" class="form-control" id="emailSubscribe" aria-describedby="emailHelp"
+                placeholder="Votre adresse email">
             </div>
             <button type="submit" class="btn btn-primary">S'abonner</button>
           </form>
@@ -430,10 +259,39 @@ footer .btn-primary:hover {
       </div>
     </div>
   </footer>
-  
 
+  <div class="container">
+    <div class="chatbox">
+      <div class="chatbox__support">
+        <div class="chatbox__header">
+          <div class="chatbox__image--header">
+            <img src="../static/assetsChat/images/robot.jpg" alt="image">
+          </div>
+          <div class="chatbox__content--header">
+            <h4 class="chatbox__heading--header">Assistance Chat</h4>
+            <p class="chatbox__description--header">Bonjour et bienvenue ! Je suis ici pour vous aider à développer vos
+              compétences!</p>
+          </div>
+        </div>
+        <div class="chatbox__messages" id="chatbox_messages">
+          <!-- Messages will appear here -->
+        </div>
+        <div class="chatbox__footer">
+          <input type="text" id="user_input" placeholder="Ecrire un message...">
+          <button class="chatbox__send--footer send__button" onclick="sendMessage()">Envoyer</button>
+        </div>
+      </div>
+      <div class="chatbox__button">
+        <button><img src="../static/assetsChat/images/iconChatt.png" /></button>
+      </div>
+    </div>
+  </div>
+
+<script src="../static//assetsChat/app.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.9/dist/umd/popper.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
+
 </html>
